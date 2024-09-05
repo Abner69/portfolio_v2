@@ -5,7 +5,6 @@ const Experience = ({ language }) => {
   const { getCollectionData } = useData();
   const [formalExperience, setFormalExperience] = useState([]);
   const [freelancerExperience, setFreelancerExperience] = useState([]);
-
   useEffect(() => {
     const projectsDataFromContext = getCollectionData("experience");
     try {
@@ -43,87 +42,136 @@ const Experience = ({ language }) => {
 
   return (
     <div className="experience-section p-4">
-      <h2 className="text-2xl font-bold mb-4">
+      <h2 className="text-2xl font-bold mb-4 flex w-full justify-center">
         {language === "en" ? "Formal Experience" : "Experiencia Formal"}
-      </h2>
-      {formalExperience.map((experience, index) => (
-        <div key={index} className="mb-6">
-          {experience.imageUrl && (
-            <img
-              src={experience.imageUrl}
-              alt={experience.companyName || "Company"}
-              className="w-16 h-16 object-cover mb-2"
-            />
-          )}
-          <h3 className="text-xl font-semibold">{experience.companyName}</h3>
-          <p className="text-sm text-gray-600">
-            {experience.role} - {experience.projectName}
-          </p>
-          <p className="text-sm">
-            {formatDate(experience.startDate)} -{" "}
-            {formatDate(experience.endDate)}
-          </p>
-          <p className="text-sm">{experience.description}</p>
-          <ul className="list-disc ml-6 mt-2">
-            {experience.responsibilities &&
-              experience.responsibilities.map((responsibility, index) => (
-                <li key={index}>{responsibility}</li>
-              ))}
-          </ul>
-          <div className="mt-2">
-            {experience.technologies &&
-              experience.technologies.map((tech, index) => (
-                <span
-                  key={index}
-                  className="mr-2 inline-block px-2 py-1 bg-gray-200 rounded"
-                >
-                  {tech}
-                </span>
-              ))}
+        <div className="dropdown dropdown-end">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-circle btn-ghost btn-xs text-info"
+          >
+            <svg
+              tabIndex={0}
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              className="h-4 w-4 stroke-current"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+          </div>
+          <div
+            tabIndex={0}
+            className="card compact dropdown-content bg-base-100 rounded-box z-[1] w-64 shadow"
+          >
+            <div className="card glass">
+              <div tabIndex={0} className="card-body ">
+                <div className="card-title text-sm">
+                  {language === "en"
+                    ? "Do you need to know how it works?"
+                    : "¿Necesitas saber como funciona?"}
+                </div>
+                <div className="flex w-full justify-center gap-1 p-4">
+                  {language === "en" ? "Press" : "Presiona"}
+                  <kbd className="kbd kbd-xs">◀︎</kbd>
+                  <kbd className="kbd kbd-xs">▶︎</kbd>
+                  {language === "en" ? "to move" : "para mover"}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      ))}
+      </h2>
 
-      <h2 className="text-2xl font-bold mb-4">
+      <div className="carousel rounded-box flex w-full justify-center p-6">
+        {formalExperience.map((experience, index) => (
+          <div className="carousel-item m-1" key={index}>
+            <div className="card bg-base-100 w-64 shadow-xl">
+              <figure className="w-full h-32 overflow-hidden">
+                <img
+                  className="w-full h-full object-cover"
+                  src={experience.imageUrl}
+                  alt={experience.companyName || "Company"}
+                />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">{experience.companyName}</h2>
+                <h3 className="text-sm text-gray-600">
+                  {experience.role} - {experience.projectName}
+                </h3>
+                <h3 className="text-sm">
+                  {formatDate(experience.startDate)} -{" "}
+                  {formatDate(experience.endDate)}
+                </h3>
+                <p>{experience.description}</p>
+                <ul className="list-disc ml-6 mt-2">
+                  {experience.responsibilities &&
+                    experience.responsibilities.map((responsibility, index) => (
+                      <li key={index}>{responsibility}</li>
+                    ))}
+                </ul>
+                <div className="mt-2">
+                  {experience.technologies &&
+                    experience.technologies.map((tech, index) => (
+                      <div className="badge badge-ghost m-1" key={index}>
+                        {tech}
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold mb-4 flex w-full justify-center">
         {language === "en" ? "Freelancer Experience" : "Experiencia Freelancer"}
       </h2>
-      {freelancerExperience.map((experience, index) => (
-        <div key={index} className="mb-6">
-          {experience.imageUrl && (
-            <img
-              src={experience.imageUrl}
-              alt={experience.companyName || "Company"}
-              className="w-16 h-16 object-cover mb-2"
-            />
-          )}
-          <h3 className="text-xl font-semibold">{experience.companyName}</h3>
-          <p className="text-sm text-gray-600">
-            {experience.role} - {experience.projectName}
-          </p>
-          <p className="text-sm">
-            {formatDate(experience.startDate)} -{" "}
-            {formatDate(experience.endDate)}
-          </p>
-          <p className="text-sm">{experience.description}</p>
-          <ul className="list-disc ml-6 mt-2">
-            {experience.responsibilities &&
-              experience.responsibilities.map((responsibility, index) => (
-                <li key={index}>{responsibility}</li>
-              ))}
-          </ul>
-          <div className="mt-2">
-            {experience.technologies &&
-              experience.technologies.map((tech, index) => (
-                <span
-                  key={index}
-                  className="mr-2 inline-block px-2 py-1 bg-gray-200 rounded"
-                >
-                  {tech}
-                </span>
-              ))}
+      <div className="carousel rounded-box flex w-full justify-center p-6">
+        {freelancerExperience.map((experience, index) => (
+          <div className="carousel-item m-1" key={index}>
+            <div className="card bg-base-100 w-64 shadow-xl">
+              <figure className="w-full h-32 overflow-hidden">
+                <img
+                  className="w-full h-full object-cover"
+                  src={experience.imageUrl}
+                  alt={experience.companyName || "Company"}
+                />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">{experience.companyName}</h2>
+                <h3 className="text-sm text-gray-600">
+                  {experience.role} - {experience.projectName}
+                </h3>
+                <h3 className="text-sm">
+                  {formatDate(experience.startDate)} -{" "}
+                  {formatDate(experience.endDate)}
+                </h3>
+                <p>{experience.description}</p>
+                <ul className="list-disc ml-6 mt-2">
+                  {experience.responsibilities &&
+                    experience.responsibilities.map((responsibility, index) => (
+                      <li key={index}>{responsibility}</li>
+                    ))}
+                </ul>
+                <div className="mt-2">
+                  {experience.technologies &&
+                    experience.technologies.map((tech, index) => (
+                      <div className="badge badge-ghost m-1" key={index}>
+                        {tech}
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

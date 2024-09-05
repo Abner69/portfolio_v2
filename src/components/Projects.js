@@ -22,37 +22,54 @@ const Projects = ({ language }) => {
   if (projects.length === 0) {
     return <p>Loading...</p>;
   }
-
   return (
-    <div className="projects-section p-4">
-      <h2 className="text-2xl font-bold mb-4">
+    <div className="projects-section p-4 flex flex-col">
+      <h2 className="text-2xl font-bold mb-4 flex w-full justify-center">
         {language === "en" ? "Projects" : "Proyectos"}
       </h2>
-      {projects.map((project, index) => (
-        <div key={index} className="project-card mb-4 p-4 bg-gray-100">
-          <h3 className="text-xl font-semibold">{project.name}</h3>
-          <p>{project.description}</p>
-          {project.imageUrl && (
-            <img src={project.imageUrl} alt={project.name} className="my-2" />
-          )}
-          {project.link && (
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500"
+      <div className="carousel rounded-box w-72 self-center p-4">
+        {projects.map((project, index) => (
+          <div className="carousel-item w-full" key={index}>
+            <div
+              data-theme="mytheme"
+              className="card bg-secondary w-80 shadow-xl"
             >
-              {language === "en" ? "View Project" : "Ver Proyecto"}
-            </a>
-          )}
-          <h4 className="text-lg font-medium mt-2">Technologies:</h4>
-          <ul className="list-disc ml-4">
-            {project.technologies.map((tech, index) => (
-              <li key={index}>{tech}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
+              <figure className="w-full h-32 overflow-hidden">
+                <img
+                  className="w-full h-full object-cover"
+                  src={project.imageUrl}
+                  alt={project.name || "Company"}
+                />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">{project.name}</h2>
+                <h3 className="text-sm text-gray-600">{project.year}</h3>
+                <p>{project.description}</p>
+                <p>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500"
+                    >
+                      {language === "en" ? "View Project" : "Ver Proyecto"}
+                    </a>
+                  )}
+                </p>
+                <div className="mt-2">
+                  {project.technologies &&
+                    project.technologies.map((tech, index) => (
+                      <div className="badge badge-ghost m-1" key={index}>
+                        {tech}
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

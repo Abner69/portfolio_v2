@@ -4,12 +4,17 @@ import Theme from "./Theme";
 const Navbar = ({ currentLanguage, onLanguageChange }) => {
   return (
     <div className="navbar bg-primary text-primary-content">
-      <button className="btn btn-ghost text-xl">daisyUI</button>
-      <div className="language-toggle">
-        <LanguageSelector setLanguage={onLanguageChange} />
+      <div className="navbar-start">
+        <button className="btn btn-ghost text-xl">daisyUI</button>
       </div>
-      <div className="theme-toggle">
-        <Theme />
+
+      <div className="navbar-end">
+        <div className="language-toggle p-2">
+          <LanguageSelector setLanguage={onLanguageChange} />
+        </div>
+        <div className="theme-toggle p-2">
+          <Theme />
+        </div>
       </div>
     </div>
   );

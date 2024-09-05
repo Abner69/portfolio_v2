@@ -2,7 +2,7 @@ import React from "react";
 
 export const LanguageSelector = ({ setLanguage }) => {
   return (
-    <div className="dropdown dropdown-hover">
+    <div className="dropdown dropdown-hover dropdown-end">
       <div tabIndex={0} role="button">
         <svg
           className="swap-on h-7 w-7 fill-current"
@@ -29,7 +29,7 @@ export const LanguageSelector = ({ setLanguage }) => {
       </div>
       <ul
         tabIndex={0}
-        className="dropdown-content menu bg-secondary rounded-box z-[1] w-52 p-1 shadow"
+        className="dropdown-content menu bg-secondary rounded-box z-[1] w-32 p-1 shadow"
       >
         <li>
           <p onClick={() => setLanguage("en")}>English</p>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useData } from "../context/DataContext";
+import Skills from "./Skills";
 
 const About = ({ language }) => {
   const { getCollectionData } = useData();
@@ -37,77 +38,67 @@ const About = ({ language }) => {
           className="max-w-sm rounded-lg shadow-2xl"
           alt=""
         />
+
         <div>
           <h1 className="text-5xl font-bold">{aboutData.name}</h1>
           <p className="py-6">{aboutData.description}</p>
-          <p className="py-4">
-            Email:{" "}
-            <a
-              href={`mailto:${aboutData.contact.email}`}
-              className="text-blue-500"
-            >
-              {aboutData.contact.email}
-            </a>
-          </p>
-          <p className="py-4">Phone: {aboutData.contact.phone}</p>
-          <p className="py-4">
-            GitHub:{" "}
-            <a
-              href={aboutData.contact.github}
-              className="text-blue-500"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub Profile
-            </a>
-          </p>
-          <p className="py-4">
-            LinkedIn:{" "}
-            <a
-              href={aboutData.contact.linkedin}
-              className="text-blue-500"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn Profile
-            </a>
-          </p>
-
-          <div className="collapse collapse-arrow bg-secondary">
-            <input type="radio" name="my-accordion-1" defaultChecked />
-            <div className="collapse-title text-xl font-medium">Interests</div>
-            <div className="collapse-content">
-              <ul className="list-disc ml-6">
-                {Array.isArray(aboutData.interests) ? (
-                  aboutData.interests.map((interest, index) => (
-                    <li key={index}>{interest}</li>
-                  ))
-                ) : (
-                  <p>No interests available</p>
-                )}
-              </ul>
-            </div>
+          <div className="text-xl font-medium">
+            {language === "en" ? "Contact" : "Contacto"}
           </div>
-          <div className="collapse collapse-arrow bg-primary">
-            <input type="radio" name="my-accordion-1" />
-            <div className="collapse-title text-xl font-medium">Skills</div>
-            <div className="collapse-content">
-              <ul className="list-disc ml-6">
-                {skills.map((skill, index) => (
-                  <li key={index}>
-                    {skill.name} - {skill.percentage}% ({skill.years}{" "}
-                    {language === "en"
-                      ? skill.years > 1
-                        ? "years"
-                        : "year"
-                      : skill.years > 1
-                      ? "años"
-                      : "año"}
-                    )
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <ul className="list-disc ml-6">
+            <li>
+              Email:{" "}
+              <a
+                href={`mailto:${aboutData.contact.email}`}
+                className="text-blue-500"
+              >
+                {aboutData.contact.email}
+              </a>
+            </li>
+            <li>
+              GitHub:{" "}
+              <a
+                href={aboutData.contact.github}
+                className="text-blue-500"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub Profile
+              </a>
+            </li>
+            <li>Phone: {aboutData.contact.phone}</li>
+            <li>
+              LinkedIn:{" "}
+              <a
+                href={aboutData.contact.linkedin}
+                className="text-blue-500"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn Profile
+              </a>
+            </li>
+          </ul>
+
+          <div className="mt-2">
+            <h2 className="text-xl font-medium">
+              {language === "en" ? "Interests" : "Intereses"}
+            </h2>
+            {Array.isArray(aboutData.interests) ? (
+              aboutData.interests.map((interest, index) => (
+                <div className="badge badge-accent m-1" key={index}>
+                  {interest}
+                </div>
+              ))
+            ) : (
+              <p>No interests available</p>
+            )}
+          </div>
+          <div className="mt-2">
+            <h2 className="text-xl font-medium">
+              {language === "en" ? "Skills" : "Habilidades"}
+            </h2>
+            <Skills skills={skills} language={language} />
           </div>
         </div>
       </div>
