@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useData } from "../context/DataContext";
+import ExperienceCard from "./ExperienceCard";
+import Skeleton from "./Skeleton";
 
 const Experience = ({ language }) => {
   const { getCollectionData } = useData();
@@ -30,19 +32,14 @@ const Experience = ({ language }) => {
   }, [language, getCollectionData]);
 
   // Función para convertir Firestore timestamp a una fecha legible
-  const formatDate = (timestamp) => {
-    if (!timestamp || !timestamp.seconds) return "N/A"; // Retorna "N/A" si el timestamp no es válido
-    const date = new Date(timestamp.seconds * 1000); // Convierte a milisegundos
-    return date.toLocaleDateString(); // Convierte a una cadena de fecha legible
-  };
 
   if (!formalExperience.length && !freelancerExperience.length) {
-    return <p>Loading...</p>;
+    return <Skeleton language={language} section={"Experience"} />;
   }
 
   return (
-    <div className="experience-section p-4">
-      <h2 className="text-2xl font-bold mb-4 flex w-full justify-center">
+    <div className="flex flex-col items-center p-4">
+      <h2 className="text-2xl font-bold mb-2 flex w-full justify-center">
         {language === "en" ? "Formal Experience" : "Experiencia Formal"}
         <div className="dropdown dropdown-end">
           <div
@@ -87,91 +84,11 @@ const Experience = ({ language }) => {
           </div>
         </div>
       </h2>
-
-      <div className="carousel rounded-box flex w-full justify-center p-6">
-        {formalExperience.map((experience, index) => (
-          <div className="carousel-item m-1" key={index}>
-            <div className="card bg-base-100 w-64 shadow-xl">
-              <figure className="w-full h-32 overflow-hidden">
-                <img
-                  className="w-full h-full object-cover"
-                  src={experience.imageUrl}
-                  alt={experience.companyName || "Company"}
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">{experience.companyName}</h2>
-                <h3 className="text-sm text-gray-600">
-                  {experience.role} - {experience.projectName}
-                </h3>
-                <h3 className="text-sm">
-                  {formatDate(experience.startDate)} -{" "}
-                  {formatDate(experience.endDate)}
-                </h3>
-                <p>{experience.description}</p>
-                <ul className="list-disc ml-6 mt-2">
-                  {experience.responsibilities &&
-                    experience.responsibilities.map((responsibility, index) => (
-                      <li key={index}>{responsibility}</li>
-                    ))}
-                </ul>
-                <div className="mt-2">
-                  {experience.technologies &&
-                    experience.technologies.map((tech, index) => (
-                      <div className="badge badge-ghost m-1" key={index}>
-                        {tech}
-                      </div>
-                    ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <h2 className="text-2xl font-bold mb-4 flex w-full justify-center">
+      <ExperienceCard experiences={formalExperience} />
+      <h2 className="text-2xl font-bold mb-2 flex w-full justify-center">
         {language === "en" ? "Freelancer Experience" : "Experiencia Freelancer"}
       </h2>
-      <div className="carousel rounded-box flex w-full justify-center p-6">
-        {freelancerExperience.map((experience, index) => (
-          <div className="carousel-item m-1" key={index}>
-            <div className="card bg-base-100 w-64 shadow-xl">
-              <figure className="w-full h-32 overflow-hidden">
-                <img
-                  className="w-full h-full object-cover"
-                  src={experience.imageUrl}
-                  alt={experience.companyName || "Company"}
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">{experience.companyName}</h2>
-                <h3 className="text-sm text-gray-600">
-                  {experience.role} - {experience.projectName}
-                </h3>
-                <h3 className="text-sm">
-                  {formatDate(experience.startDate)} -{" "}
-                  {formatDate(experience.endDate)}
-                </h3>
-                <p>{experience.description}</p>
-                <ul className="list-disc ml-6 mt-2">
-                  {experience.responsibilities &&
-                    experience.responsibilities.map((responsibility, index) => (
-                      <li key={index}>{responsibility}</li>
-                    ))}
-                </ul>
-                <div className="mt-2">
-                  {experience.technologies &&
-                    experience.technologies.map((tech, index) => (
-                      <div className="badge badge-ghost m-1" key={index}>
-                        {tech}
-                      </div>
-                    ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <ExperienceCard experiences={freelancerExperience} />
     </div>
   );
 };

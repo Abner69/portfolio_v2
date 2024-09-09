@@ -5,7 +5,7 @@ const Theme = () => {
     <label className="grid cursor-pointer place-items-center">
       <input
         type="checkbox"
-        value="coffee"
+        value="dracula"
         className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1"
       />
       <svg

@@ -2,42 +2,59 @@ import React from "react";
 
 export const LanguageSelector = ({ setLanguage }) => {
   return (
-    <div className="dropdown dropdown-hover dropdown-end">
-      <div tabIndex={0} role="button">
+    <div title="Change Language" className="dropdown dropdown-end relative">
+      <div
+        tabIndex="0"
+        role="button"
+        className="btn btn-ghost"
+        aria-label="Language"
+      >
         <svg
-          className="swap-on h-7 w-7 fill-current"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          className="h-4 w-4"
         >
-          <g
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinejoin="round"
-              d="M14 19c3.771 0 5.657 0 6.828-1.172S22 14.771 22 11s0-5.657-1.172-6.828S17.771 3 14 3h-4C6.229 3 4.343 3 3.172 4.172S2 7.229 2 11s0 5.657 1.172 6.828c.653.654 1.528.943 2.828 1.07"
-            ></path>
-            <path d="M14 19c-1.236 0-2.598.5-3.841 1.145c-1.998 1.037-2.997 1.556-3.489 1.225s-.399-1.355-.212-3.404L6.5 17.5"></path>
-            <path
-              strokeLinejoin="round"
-              d="m5.5 13.5l1-2m0 0l1.106-2.211a1 1 0 0 1 1.788 0L10.5 11.5m-4 0h4m0 0l1 2m1-6h1.982V9c0 .5-.496 1.5-1.487 1.5m3.964-3v2m0 0v4m0-4H18.5"
-            ></path>
-          </g>
+          <path
+            fillRule="evenodd"
+            d="M11 5a.75.75 0 0 1 .688.452l3.25 7.5a.75.75 0 1 1-1.376.596L12.89 12H9.109l-.67 1.548a.75.75 0 1 1-1.377-.596l3.25-7.5A.75.75 0 0 1 11 5Zm-1.24 5.5h2.48L11 7.636 9.76 10.5ZM5 1a.75.75 0 0 1 .75.75v1.261a25.27 25.27 0 0 1 2.598.211.75.75 0 1 1-.2 1.487c-.22-.03-.44-.056-.662-.08A12.939 12.939 0 0 1 5.92 8.058c.237.304.488.595.752.873a.75.75 0 0 1-1.086 1.035A13.075 13.075 0 0 1 5 9.307a13.068 13.068 0 0 1-2.841 2.546.75.75 0 0 1-.827-1.252A11.566 11.566 0 0 0 4.08 8.057a12.991 12.991 0 0 1-.554-.938.75.75 0 1 1 1.323-.707c.049.09.099.181.15.271.388-.68.708-1.405.952-2.164a23.941 23.941 0 0 0-4.1.19.75.75 0 0 1-.2-1.487c.853-.114 1.72-.185 2.598-.211V1.75A.75.75 0 0 1 5 1Z"
+            clipRule="evenodd"
+          ></path>
+        </svg>
+        <svg
+          width="12px"
+          height="12px"
+          className="hidden h-2 w-2 fill-current opacity-60 sm:inline-block"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 2048 2048"
+        >
+          <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
         </svg>
       </div>
-      <ul
-        tabIndex={0}
-        className="dropdown-content menu bg-secondary rounded-box z-[1] w-32 p-1 shadow"
+      <div
+        tabIndex="0"
+        className="dropdown-content bg-base-200 text-base-content rounded-box top-px mt-16 max-h-[calc(100vh-10rem)] w-56 overflow-y-auto border border-white/5 shadow-2xl outline outline-1 outline-black/5 z-50"
+        style={{ position: "absolute" }}
       >
-        <li>
-          <p onClick={() => setLanguage("en")}>English</p>
-        </li>
-        <li>
-          <p onClick={() => setLanguage("es")}>Español</p>
-        </li>
-      </ul>
+        <ul className="menu menu-sm gap-1">
+          <li>
+            <button onClick={() => setLanguage("en")}>
+              <span className="badge badge-sm badge-outline !pl-1.5 !pr-1 pt-px font-mono !text-[.6rem] font-bold tracking-widest opacity-50">
+                EN
+              </span>
+              <span className="font-[sans-serif]">English</span>
+            </button>
+          </li>
+          <li>
+            <button onClick={() => setLanguage("es")}>
+              <span className="badge badge-sm badge-outline !pl-1.5 !pr-1 pt-px font-mono !text-[.6rem] font-bold tracking-widest opacity-50">
+                ES
+              </span>{" "}
+              <span className="font-[sans-serif]">Español</span>
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

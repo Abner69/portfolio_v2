@@ -4,7 +4,7 @@ module.exports = {
   theme: {},
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
   daisyui: {
-    themes: ["retro", "coffee", "synthwave"],
+    themes: ["pastel", "dracula", "cyberpunk"],
   },
   darkMode: ["class", '[data-theme="coffee"]'],
 };
