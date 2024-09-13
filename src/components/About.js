@@ -74,8 +74,8 @@ const About = ({ language }) => {
   }
 
   return (
-    <div className="hero bg-secondary bg-opacity-75 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row">
+    <div className="m-4 p-8 rounded-lg bg-cherry-main dark:bg-dracula-main">
+      <div className="flex flex-col md:flex-row">
         <div className="max-w-sm mx-auto flex flex-col items-center">
           <img
             src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
@@ -84,7 +84,10 @@ const About = ({ language }) => {
           />
           <div className="flex flex-wrap mt-4 justify-center">
             {softSkillData.map((sSkill, index) => (
-              <div className="badge m-1 badge-ghost bg-opacity-25" key={index}>
+              <div
+                className="m-1 py-1 px-2 text-cherry-text bg-black bg-opacity-5 dark:text-dracula-text dark:bg-white dark:bg-opacity-5 rounded-2xl"
+                key={index}
+              >
                 {sSkill}
               </div>
             ))}
@@ -92,22 +95,28 @@ const About = ({ language }) => {
         </div>
 
         <div className="flex flex-col items-center">
-          <h1 className="text-5xl font-bold m-4">{aboutData.name}</h1>
-          <h2 className="text-3xl font-bold m-4">&gt;{currentText}</h2>
+          <h1 className="text-5xl font-bold m-4 text-center text-cherry-text dark:text-dracula-text">
+            {aboutData.name}
+          </h1>
+          <h2 className="text-center text-3xl font-bold m-4 text-cherry-title dark:text-dracula-title">
+            &gt;{currentText}
+          </h2>
 
-          <p className="py-6">{aboutData.description}</p>
-          <div className="text-xl font-medium">
+          <p className="text-center text-xl py-6 text-cherry-subtext dark:text-dracula-subtext">
+            {aboutData.description}
+          </p>
+          <div className="text-cherry-subtext dark:text-dracula-subtext text-2xl font-bold py-2">
             {language === "en" ? "Get in touch" : "Contactame"}
           </div>
           <Contact language={language} contact={aboutData.contact} />
-          <div className="text-xl font-medium">
+          <div className="text-cherry-subtext dark:text-dracula-subtext text-2xl font-bold py-2">
             {language === "en" ? "Interests" : "Intereses"}
           </div>
           <div className="w-full flex flex-wrap justify-center items-center p-2">
             {Array.isArray(aboutData.interests) ? (
               aboutData.interests.map((interest, index) => (
                 <div
-                  className="badge m-1 bg-gray-500 bg-opacity-25 badge-ghost"
+                  className="m-1 py-1 px-2 text-cherry-text bg-black bg-opacity-5 dark:text-dracula-text dark:bg-white dark:bg-opacity-5 rounded-2xl"
                   key={index}
                 >
                   {interest}

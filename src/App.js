@@ -17,7 +17,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="dark:bg-dracula-bg">
       <DataProvider>
         <NavBar
           currentLanguage={language}

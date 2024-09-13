@@ -5,7 +5,7 @@ export default function Contact({ language, contact }) {
   return (
     <div className="w-full flex flex-wrap justify-center items-center">
       <a
-        className="card min-h-[8rem] bg-slate-600 bg-opacity-25 shadow-xl w-32 items-center m-2 p-2 hover:border hover:border-blue-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110 "
+        className="flex flex-col min-h-[8rem] bg-cherry-orange shadow-xl w-32 items-center m-2 p-2 rounded-xl bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110 "
         href={`mailto:${contact.email}`}
       >
         <svg
@@ -14,7 +14,7 @@ export default function Contact({ language, contact }) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="h-8"
+          className="h-8 text-cherry-title dark:text-dracula-title"
         >
           <path
             strokeLinecap="round"
@@ -22,11 +22,11 @@ export default function Contact({ language, contact }) {
             d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
           />
         </svg>
-        <div className="card-body items-center p-1">
-          <div className="card-title">
+        <div className="flex flex-col items-center p-1">
+          <div className="text-cherry-text dark:text-dracula-text">
             {language === "en" ? "Email" : "Correo"}
           </div>
-          <div className="text-sm text-center hover:underline ">
+          <div className="text-cherry-text text-sm text-center hover:underline dark:text-dracula-text">
             {contact.email.split("@")[0]}
             <br />@{contact.email.split("@")[1]}
           </div>
@@ -34,13 +34,13 @@ export default function Contact({ language, contact }) {
       </a>
 
       <a
-        className="card min-h-[8rem] bg-slate-600 bg-opacity-25 shadow-xl w-32 items-center m-2 p-2 hover:border hover:border-blue-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110"
+        className="flex flex-col min-h-[8rem] bg-cherry-orange shadow-xl w-32 items-center m-2 p-2 rounded-xl bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110"
         href={contact.github}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          className="h-8"
+          className="h-8 text-cherry-title dark:text-dracula-title"
         >
           <path
             fill="currentColor"
@@ -48,38 +48,40 @@ export default function Contact({ language, contact }) {
           ></path>
         </svg>
 
-        <div className="card-body items-center p-1">
-          <div className="card-title">GitHub</div>
-          <div className="text-sm text-center hover:underline">
+        <div className="flex flex-col items-center p-1">
+          <div className="text-cherry-text dark:text-dracula-text">GitHub</div>
+          <div className="text-cherry-text dark:text-dracula-text text-sm text-center hover:underline">
             {language === "en" ? "GitHub Profile" : "GitHub de Linkedin"}
           </div>
         </div>
       </a>
 
       <a
-        className="card min-h-[8rem] bg-slate-600 bg-opacity-25 shadow-xl w-32 items-center m-2 p-2 hover:border hover:border-blue-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110"
+        className="flex flex-col min-h-[8rem] bg-cherry-orange shadow-xl w-32 items-center m-2 p-2 rounded-xl bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110"
         href={contact.linkedin}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          className="h-8"
+          className="h-8 text-cherry-title dark:text-dracula-title"
         >
           <path
             fill="currentColor"
             d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037c-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85c3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.06 2.06 0 0 1-2.063-2.065a2.064 2.064 0 1 1 2.063 2.065m1.782 13.019H3.555V9h3.564zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"
           ></path>
         </svg>
-        <div className="card-body items-center p-1">
-          <div className="card-title">LinkedIn</div>
-          <div className="text-sm text-center hover:underline">
+        <div className="flex flex-col items-center p-1">
+          <div className="text-cherry-text dark:text-dracula-text">
+            LinkedIn
+          </div>
+          <div className="text-cherry-text dark:text-dracula-text text-sm text-center hover:underline">
             {language === "en" ? "LinkedIn Profile" : "Perfil de Linkedin"}
           </div>
         </div>
       </a>
 
       <a
-        className="card min-h-[8rem] bg-slate-600 bg-opacity-25 shadow-xl w-32 items-center m-2 p-2 hover:border hover:border-blue-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110"
+        className="flex flex-col min-h-[8rem] bg-cherry-orange shadow-xl w-32 items-center m-2 p-2 rounded-xl bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110"
         href={
           "https://api.whatsapp.com/send?phone=" +
           cleanPhoneNumber(contact.phone)
@@ -91,7 +93,7 @@ export default function Contact({ language, contact }) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="h-8"
+          className="h-8 text-cherry-title dark:text-dracula-title"
         >
           <path
             strokeLinecap="round"
@@ -100,11 +102,11 @@ export default function Contact({ language, contact }) {
           />
         </svg>
 
-        <div className="card-body items-center p-1">
-          <div className="card-title">
+        <div className="flex flex-col items-center p-1">
+          <div className="text-cherry-text dark:text-dracula-text">
             {language === "en" ? "Phone" : "Telefono"}
           </div>
-          <div className="text-sm text-center hover:underline">
+          <div className="text-cherry-text dark:text-dracula-text text-sm text-center hover:underline">
             {contact.phone}
           </div>
         </div>

@@ -26,7 +26,7 @@ const Projects = ({ language }) => {
   }
   return (
     <div className="flex flex-col items-center p-4">
-      <h2 className="text-2xl font-bold mb-2 flex w-full justify-center">
+      <h2 className="text-3xl font-bold m-4 text-cherry-title dark:text-dracula-title">
         {language === "en" ? "Projects" : "Proyectos"}
       </h2>
       <ProjectCard language={language} projects={projects} />
