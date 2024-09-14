@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useData } from "../context/DataContext";
 import ExperienceCard from "./ExperienceCard";
 import Skeleton from "./Skeleton";
+import { useLanguage } from "../context/LanguageContext";
 
-const Experience = ({ language }) => {
+const Experience = () => {
+  const { language } = useLanguage();
   const { getCollectionData } = useData();
   const [formalExperience, setFormalExperience] = useState([]);
   const [freelancerExperience, setFreelancerExperience] = useState([]);

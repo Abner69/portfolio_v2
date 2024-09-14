@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
-export const LanguageSelector = ({ setLanguage }) => {
+export const LanguageSelector = () => {
+  const { language, handleLanguageChange } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState("en"); // Estado para mantener el idioma seleccionado
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -29,9 +30,8 @@ export const LanguageSelector = ({ setLanguage }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleLanguageChange = (lang) => {
-    setSelectedLanguage(lang); // Actualiza el estado del idioma seleccionado
-    setLanguage(lang); // Llama a la función externa para establecer el idioma
+  const handleSelectedLanguage = (lang) => {
+    handleLanguageChange(lang); // Actualiza el estado del idioma seleccionado
     setIsOpen(!isOpen);
   };
 
@@ -42,7 +42,7 @@ export const LanguageSelector = ({ setLanguage }) => {
           onClick={toggleDropdown}
           className="inline-flex w-full px-4 py-2 text-sm font-medium rounded-md shadow-sm focus:outline-none text-white bg-cherry-text hover:text-cherry-title focus:ring-4 focus:ring-cherry-text-400 dark:bg-white dark:bg-opacity-15 dark:hover:bg-opacity-5 dark:text-dracula-text dark:focus:ring-dracula-text-900"
         >
-          {selectedLanguage === "en" ? "English" : "Español"}
+          {language === "en" ? "English" : "Español"}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -64,16 +64,16 @@ export const LanguageSelector = ({ setLanguage }) => {
         <div className="absolute right-0 w-24 mt-2 origin-top-right rounded-md shadow-lg bg-cherry-main dark:bg-dracula-main">
           <div className="p-2">
             <button
-              onClick={() => handleLanguageChange("en")}
+              onClick={() => handleSelectedLanguage("en")}
               className="flex items-center text-center w-full px-2 py-2 my-2 text-sm text-cherry-text-900 hover:bg-black hover:bg-opacity-10 hover:rounded-xl focus:outline-none dark:text-dracula-title dark:hover:bg-white dark:hover:bg-opacity-15"
             >
-              {selectedLanguage === "en" ? "English" : "Inglés"}
+              {language === "en" ? "English" : "Inglés"}
             </button>
             <button
-              onClick={() => handleLanguageChange("es")}
+              onClick={() => handleSelectedLanguage("es")}
               className="flex items-center text-center w-full px-2 py-2 my-2 text-sm text-cherry-text-900 hover:bg-black hover:bg-opacity-10 hover:rounded-xl focus:outline-none dark:text-dracula-title dark:hover:bg-white dark:hover:bg-opacity-15"
             >
-              {selectedLanguage === "en" ? "Spanish" : "Español"}
+              {language === "en" ? "Spanish" : "Español"}
             </button>
           </div>
         </div>

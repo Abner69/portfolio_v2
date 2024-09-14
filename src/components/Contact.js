@@ -1,6 +1,8 @@
 import React from "react";
+import { useLanguage } from "../context/LanguageContext";
 
-export default function Contact({ language, contact }) {
+export default function Contact({ contact }) {
+  const { language } = useLanguage();
   const cleanPhoneNumber = (phone) => phone.replace(/\D/g, "");
   return (
     <div className="w-full flex flex-wrap justify-center items-center">

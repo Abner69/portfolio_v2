@@ -36,6 +36,33 @@
     transform: rotate(360deg);
   }
 }
-.grad {
-  border-image: linear-gradient(45deg, #3d8bff, #ab23ff) 1;
+@keyframes rainbowGlow {
+  0% {
+    stroke: #ff0000;
+    fill: #ff0000;
+  }
+  20% {
+    stroke: #ff9900;
+    fill: #ff9900;
+  }
+  40% {
+    stroke: #ffff00;
+    fill: #ffff00;
+  }
+  60% {
+    stroke: #00ff00;
+    fill: #00ff00;
+  }
+  80% {
+    stroke: #0000ff;
+    fill: #0000ff;
+  }
+  100% {
+    stroke: #ff00ff;
+    fill: #ff00ff;
+  }
+}
+
+.rainbow-glow {
+  animation: rainbowGlow 2s linear infinite;
 }

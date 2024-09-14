@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useData } from "../context/DataContext"; // Asegúrate de que la ruta sea correcta
 import ProjectCard from "./ProjectCard";
 import Skeleton from "./Skeleton";
+import { useLanguage } from "../context/LanguageContext";
 
-const Projects = ({ language }) => {
+const Projects = () => {
+  const { language } = useLanguage();
   const { getCollectionData } = useData();
   const [projects, setProjects] = useState([]);
 

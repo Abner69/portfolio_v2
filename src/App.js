@@ -1,45 +1,43 @@
-import React, { useState } from "react";
+import "./App.css";
 import NavBar from "../src/components/NavBar";
 import About from "./components/About";
 import Footer from "./components/Footer";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import Skills from "./components/Skills";
+import Certifications from "./components/Certifications";
 import { DataProvider } from "./context/DataContext";
+import { WizardProvider } from "./context/WizardContext";
+import { LanguageProvider } from "./context/LanguageContext";
 const App = () => {
-  const [language, setLanguage] = useState(() => {
-    return localStorage.getItem("language") || "en";
-  });
-
-  const handleLanguageChange = (newLanguage) => {
-    setLanguage(newLanguage);
-    localStorage.setItem("language", newLanguage); // Guardar el idioma seleccionado en localStorage
-  };
-
   return (
     <div className="dark:bg-dracula-bg">
-      <DataProvider>
-        <NavBar
-          currentLanguage={language}
-          onLanguageChange={handleLanguageChange}
-        />
-        <div id="about">
-          <About language={language} />
-        </div>
+      <LanguageProvider>
+        <DataProvider>
+          <WizardProvider>
+            <NavBar />
+            <div id="about">
+              <About />
+            </div>
 
-        <div id="skills">
-          <Skills language={language} />
-        </div>
+            <div id="skills">
+              <Skills />
+            </div>
+            <div id="certifications">
+              <Certifications />
+            </div>
 
-        <div id="experience">
-          <Experience language={language} />
-        </div>
+            <div id="experience">
+              <Experience />
+            </div>
 
-        <div id="projects">
-          <Projects language={language} />
-        </div>
-        <Footer language={language} />
-      </DataProvider>
+            <div id="projects">
+              <Projects />
+            </div>
+            <Footer />
+          </WizardProvider>
+        </DataProvider>
+      </LanguageProvider>
     </div>
   );
 };

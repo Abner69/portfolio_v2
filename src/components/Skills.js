@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useData } from "../context/DataContext";
 import Skeleton from "./Skeleton";
+import { useLanguage } from "../context/LanguageContext";
 
-export default function Skills({ language }) {
+export default function Skills() {
+  const { language } = useLanguage();
   const { getCollectionData } = useData();
   const [skills, setSkills] = useState([]);
   const [visiblePercentages, setVisiblePercentages] = useState([]); // Estado para los porcentajes visibles
@@ -88,7 +90,7 @@ export default function Skills({ language }) {
       <div className="rounded-box flex w-full md:justify-center rounded-xl p-4 overflow-x-auto bg-cherry-main dark:bg-dracula-main">
         {skills.map((skill, index) => (
           <div
-            className="min-w-64 m-4 shadow-xl rounded-xl overflow-hidden hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110 hover:m-4"
+            className="max-w-64 m-4 shadow-xl rounded-xl overflow-hidden hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110 hover:m-4"
             key={index}
           >
             <img

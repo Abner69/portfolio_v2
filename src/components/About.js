@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useData } from "../context/DataContext";
 import Contact from "./Contact";
 import Skeleton from "./Skeleton";
-const About = ({ language }) => {
+import { useLanguage } from "../context/LanguageContext";
+const About = () => {
+  const { language } = useLanguage();
   const { getCollectionData } = useData();
   const [aboutData, setAboutData] = useState([]);
   const [currentText, setCurrentText] = useState("");
@@ -95,9 +97,12 @@ const About = ({ language }) => {
         </div>
 
         <div className="flex flex-col items-center">
-          <h1 className="text-5xl font-bold m-4 text-center text-cherry-text dark:text-dracula-text">
+          <h1 className="text-5xl font-bold mx-4 mt-4 text-center text-cherry-text dark:text-dracula-text">
             {aboutData.name}
           </h1>
+          <p className="text-center text-sm py-6 text-gray-700 dark:text-gray-400">
+            {aboutData.college} - {aboutData.degree} - {aboutData.yofStudy}
+          </p>
           <h2 className="text-center text-3xl font-bold m-4 text-cherry-title dark:text-dracula-title">
             &gt;{currentText}
           </h2>

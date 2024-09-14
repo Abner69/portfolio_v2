@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useData } from "../context/DataContext"; // Asegúrate de que la ruta sea correcta
 import Logo from "../assets/Logo";
-const Footer = ({ language }) => {
+import { useLanguage } from "../context/LanguageContext";
+const Footer = () => {
+  const { language } = useLanguage();
   const { getCollectionData } = useData();
   const [footerData, setFooterData] = useState([]);
 
