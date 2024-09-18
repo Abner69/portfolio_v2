@@ -1,11 +1,10 @@
 // src/components/MagicMode.js
 import React, { useRef, useState } from "react";
 import soundFile from "../assets/wizzards.weba"; // Ruta al archivo .weba
-import { useWizard } from "../context/WizardContext";
+import MagicButton from "./MagicMessage";
 
 export default function MagicMode() {
   const audioRef = useRef(null);
-  const { isWizardActive, toggleWizardState } = useWizard(); // Obtener el contexto
   const [isHover, setIsHover] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -59,19 +58,7 @@ export default function MagicMode() {
           ></path>
         </svg>
       </button>
-      {isClicked && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-md shadow-md relative">
-            <p>Este es el mensaje que aparece sobre toda la pantalla.</p>
-            <button
-              onClick={handleClose}
-              className="absolute top-2 right-2 px-3 py-1 bg-red-500 text-white rounded"
-            >
-              Cerrar
-            </button>
-          </div>
-        </div>
-      )}
+      {isClicked && <MagicButton handleClose={handleClose} />}
     </div>
   );
 }

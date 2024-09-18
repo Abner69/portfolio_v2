@@ -66,3 +66,10 @@
 .rainbow-glow {
   animation: rainbowGlow 2s linear infinite;
 }
+.hide-scrollbar {
+  scrollbar-width: none; /* Para Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Para Chrome, Safari y Edge */
+}

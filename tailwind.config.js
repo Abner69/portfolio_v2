@@ -5,6 +5,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        "neon-green": "#39FF14",
+        "neon-pink": "#FF00FF",
+        "neon-blue": "#00FFFF",
+        "cyber-bg": "#0f0f0f",
         dracula: {
           bg: "#282a36",
           main: "#1c1d26", // Color del texto activo en la navegación
@@ -45,6 +49,21 @@ module.exports = {
           subtitle: "#452F61",
           "sub-title": "#ff84ac", // Color del botón activo
         },
+        swmg: {
+          display: "#58ec46",
+          back: "#111f1d",
+          text: "#43da44",
+          subtext: "#eff0f0",
+          cmdtext: "#7d82d7",
+          "cmdtext-100": "#75e1e7",
+          "cmdtext-200": "#75e1e7",
+        },
+      },
+      boxShadow: {
+        "inner-neon": "inset 0 0 20px 4px #FF00FF", // Borde interno con color neón rosa
+      },
+      fontFamily: {
+        retro: ['"Dina"', "sans-serif"], // Definir la fuente retro
       },
     },
   },

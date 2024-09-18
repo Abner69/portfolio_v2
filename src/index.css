@@ -1,6 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap");
+@font-face {
+  font-family: "Dina";
+  src: url("../src/assets/fonts/Dina/dina10px.ttf") format("truetype"); /* o 'woff', 'woff2', según el archivo */
+  font-weight: normal; /* También puedes definir otros pesos */
+  font-style: normal; /* También puedes definir cursiva si tienes variantes */
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
