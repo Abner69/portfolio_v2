@@ -1,56 +1,68 @@
 import React from "react";
+import ProjectCmd from "./ProjectCmd";
+import ExperienceCmd from "./ExperienceCmd";
+import SkillsCmd from "./SkillsCmd";
+import WhoAmi from "./WhoAmi";
+import { useLanguage } from "../context/LanguageContext";
+import { useWizard } from "../context/WizardContext";
+import HelpCmd from "./HelpCmd";
 
 export default function Commands({ cmd, history }) {
-  switch (cmd) {
+  const { language, handleLanguageChange } = useLanguage();
+  const { toggleWizardState } = useWizard();
+
+  switch (cmd.toLowerCase()) {
     case "help":
+      return <HelpCmd />;
+    case "lang":
       return (
-        <div className="text-swmg-cmdtext-100 text-lg">
-          whoami
+        <div>
+          <button
+            onClick={() => handleLanguageChange("en")}
+            className="text-swmg-cmdtext hover:text-swmg-cmdtext-100"
+          >
+            {language === "en" ? "English" : "Inglés"}
+          </button>
           <br />
-          <span className="ml-2">↳</span>&nbsp;
-          <span className="text-swmg-cmdtext">Displays Who I am?</span>
-          <br />
-          experience
-          <br />
-          <span className="ml-2">↳</span>&nbsp;
-          <span className="text-swmg-cmdtext">Lists my work experience. </span>
-          <br />
-          projects
-          <br />
-          <span className="ml-2">↳</span>&nbsp;
-          <span className="text-swmg-cmdtext">View coding projects. </span>
-          <br />
-          history
-          <br />
-          <span className="ml-2">↳</span>&nbsp;
-          <span className="text-swmg-cmdtext">View command history. </span>
-          <br />
-          help
-          <br />
-          <span className="ml-2">↳</span>&nbsp;
-          <span className="text-swmg-cmdtext">Displays this help msg. </span>
-          <br />
-          sudo
-          <br />
-          <span className="ml-2">↳</span>&nbsp;
-          <span className="text-swmg-cmdtext">Try it out for yourself. </span>
-          <br />
-          clear
-          <br />
-          <span className="ml-2">↳</span>&nbsp;
-          <span className="text-swmg-cmdtext">Clear terminal.</span>
+          <button
+            onClick={() => handleLanguageChange("es")}
+            className="text-swmg-cmdtext hover:text-swmg-cmdtext-100"
+          >
+            {language === "en" ? "Spanish" : "Español"}
+          </button>
+        </div>
+      );
+    case "exit":
+      return (
+        <div>
+          <span className="text-swmg-cmdtext-100">
+            {language === "en" ? "Are you sure?" : "¿Está seguro?"}
+          </span>{" "}
+          <button
+            onClick={() => toggleWizardState(false)}
+            className="text-swmg-cmdtext hover:text-swmg-cmdtext-100"
+          >
+            {language === "en" ? "Yes" : "Sí"}
+          </button>{" "}
+          <button className="text-swmg-cmdtext hover:text-swmg-cmdtext-100">
+            No
+          </button>
         </div>
       );
     case "whoami":
-      return <span className="underline">Hey, I'm Abner!👋</span>;
-
+      return <WhoAmi />;
     case "history":
       return history.map((entry, index) => <div key={index}>{entry}</div>);
-
+    case "projects":
+      return <ProjectCmd />;
+    case "experience":
+      return <ExperienceCmd />;
+    case "skills":
+      return <SkillsCmd />;
     default:
       return (
         <span>
-          Command not found — Type{" "}
+          Command "{cmd}" not found — Type{" "}
           <span class="text-swmg-cmdtext-100">help</span> for a list of
           supported commands.
         </span>

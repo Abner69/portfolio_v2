@@ -29,7 +29,7 @@ export default function Terminal() {
   };
 
   return (
-    <div className="p-4 overflow-auto hide-scrollbar text-swmg-subtext h-full">
+    <div className="p-4 text-lg overflow-auto hide-scrollbar text-swmg-subtext h-full">
       <span class="text-swmg-cmdtext ">
         Welcome to my portfolio! — Type{" "}
         <span class="text-swmg-cmdtext-100">help</span> for a list of supported

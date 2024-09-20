@@ -1,33 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import image from "../assets/wiiiiizard.webp";
+import { useData } from "../context/DataContext";
 export default function PresentationTerminal() {
   const { language } = useLanguage();
+  const { getCollectionData } = useData();
+  const [aboutData, setAboutData] = useState([]);
+  const [presentationData, setPresentationData] = useState([]);
+  const cleanPhoneNumber = (phone) => phone.replace(/\D/g, "");
+  localStorage.clear();
+  useEffect(() => {
+    const profileDataFromContext = getCollectionData("profile");
+    try {
+      if (profileDataFromContext.length) {
+        const filteredAbout = profileDataFromContext.filter(
+          (doc) => doc.lang === language && doc.component === "About"
+        );
+        setAboutData(filteredAbout[0]);
+        const filteredPresentation = profileDataFromContext.filter(
+          (doc) => doc.component === "PresentationCMD"
+        );
+        setPresentationData(filteredPresentation[0]);
+      }
+    } catch (error) {
+      console.error("Error fetching About data:", error);
+    }
+  }, [language, getCollectionData]);
+  if (aboutData.length === 0) {
+    return <div>{language === "en" ? "No Data" : "No hay Datos"}</div>;
+  }
   return (
     <div class="p-4">
-      <div class="flex flex-col justify-between items-center lg:flex-row lg:justify-between lg:h-48">
-        <div className="text-sm text-center w-full lg:w-1/3 lg:text-left text-swmg-text">
-          ¡Bienvenidos al Reino de Abner Castellanos! Este es un lugar donde la
-          magia del código cobra vida. Aquí, las ideas se transforman en
-          soluciones, y la tecnología se domina con maestría. Python, Django, y
-          AWS son las herramientas que forjan proyectos imponentes, y la
-          colaboración global es nuestra fuerza. Adéntrate con valor, pues
-          juntos escribiremos un legado en cada línea de código. ¡Bienvenido a
-          un reino donde la innovación nunca descansa!
+      <div class="flex flex-col justify-between items-center lg:flex-row lg:justify-between lg:h-52">
+        <div className="text-md text-center h-full w-full lg:w-1/3 lg:text-left text-swmg-text">
+          {language === "en"
+            ? presentationData.presentationEn
+            : presentationData.presentationEs}
         </div>
-        <div className="flex justify-center w-full lg:w-1/3">
+        <div className="flex justify-center h-full w-full lg:w-1/3">
           <img src={image} className="rounded-lg shadow-2xl size-48 " alt="" />
         </div>
 
-        <div className="flex flex-col justify-center text-left w-full lg:w-1/3">
-          <div class="text-swmg-subtext md:text-[16px] text-[15px]">
-            Abner Castellanos
-            <div class="text-swmg-subtext">-----------------------</div>
+        <div className="flex flex-col justify-center text-left w-full h-full lg:w-1/3">
+          <div class="text-swmg-subtext text-lg mt-4">
+            {aboutData.name}
+            <br />
+            -----------------------
           </div>
-          <a
-            className="flex self-baseline"
-            href="https://drive.google.com/file/d/1TEDi7fgC7Neo9SMWVlLOsBSFoZ0wzbBg/view?usp=sharing"
-          >
+          <a className="flex self-baseline" href={aboutData.contact.resume}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -51,7 +71,7 @@ export default function PresentationTerminal() {
           </a>
           <a
             className="flex self-baseline"
-            href="https://github.com/abner69"
+            href={aboutData.contact.github}
             target="blank"
           >
             <svg
@@ -66,12 +86,12 @@ export default function PresentationTerminal() {
               ></path>
             </svg>
             <div class="text-swmg-subtext text-lg hover:text-swmg-text">
-              Github →&nbsp;github/abner69
+              Github →&nbsp;github/{presentationData.github}
             </div>{" "}
           </a>
           <a
             className="flex self-baseline"
-            href="https://x.com/thepipiripau69"
+            href={aboutData.contact.twitter}
             target="blank"
           >
             <svg
@@ -86,12 +106,12 @@ export default function PresentationTerminal() {
               ></path>
             </svg>
             <div class="text-swmg-subtext text-lg hover:text-swmg-text">
-              Twitter →&nbsp;twitter/thepipiripau69
+              Twitter →&nbsp;twitter/{presentationData.twitter}
             </div>
           </a>
           <a
             className="flex self-baseline"
-            href="https://www.linkedin.com/in/abner-ely-castellanos-diaz-880b2123b/"
+            href={aboutData.contact.linkedin}
             target="blank"
           >
             <svg
@@ -106,12 +126,12 @@ export default function PresentationTerminal() {
               ></path>
             </svg>
             <div class="text-swmg-subtext text-lg hover:text-swmg-text">
-              Linkedin →&nbsp;linkedin/abner-ely-castellanos-diaz
+              Linkedin →&nbsp;linkedin/{presentationData.linkedin}
             </div>
           </a>
           <a
             className="flex self-baseline"
-            href="https://www.instagram.com/el_pipiripau.exe/"
+            href={aboutData.contact.instagram}
             target="blank"
           >
             <svg
@@ -126,7 +146,32 @@ export default function PresentationTerminal() {
               ></path>
             </svg>
             <div class="text-swmg-subtext text-lg hover:text-swmg-text">
-              Instagram →&nbsp;instagram/el_pipiripau.exe
+              Instagram →&nbsp;instagram/{presentationData.instagram}
+            </div>
+          </a>
+          <a
+            className="flex self-baseline"
+            href={
+              "https://api.whatsapp.com/send?phone=" +
+              cleanPhoneNumber(aboutData.contact.phone)
+            }
+            target="blank"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="size-4 m-1 text-swmg-subtext"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+              />
+            </svg>
+            <div class="text-swmg-subtext text-lg hover:text-swmg-text">
+              {language === "en" ? "Telephone" : "Telefono"} →&nbsp;wa.me/
+              {aboutData.contact.phone}
             </div>
           </a>
         </div>
