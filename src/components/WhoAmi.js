@@ -6,6 +6,7 @@ export default function WhoAmi() {
   const { language } = useLanguage();
   const { getCollectionData } = useData();
   const [aboutData, setAboutData] = useState([]);
+  const [softSkillData, setSoftSkillData] = useState([]);
   useEffect(() => {
     const profileDataFromContext = getCollectionData("profile");
     try {
@@ -14,6 +15,12 @@ export default function WhoAmi() {
           (doc) => doc.lang === language && doc.component === "About"
         );
         setAboutData(filteredAbout[0]);
+        const filteredSoftSkills = profileDataFromContext.filter(
+          (doc) => doc.lang === language && doc.component === "SoftSkills"
+        );
+        setSoftSkillData(
+          filteredSoftSkills.length > 0 ? filteredSoftSkills[0].softSkills : []
+        );
       }
     } catch (error) {
       console.error("Error fetching About data:", error);
@@ -48,6 +55,15 @@ export default function WhoAmi() {
       <span className="text-swmg-cmdtext">
         {language === "en" ? "Description: " : "Descripcion: "}
         <span className="text-swmg-cmdtext-100">{aboutData.description}</span>
+      </span>
+      <span className="text-swmg-cmdtext">
+        {language === "en" ? "Human Skills: " : "Habilidades Humanas: "}
+        {softSkillData.map((sSkill, index) => (
+          <span className="ml-1 text-swmg-cmdtext-100" key={index}>
+            {" " + sSkill + " "}
+            {softSkillData.length !== index + 1 ? "-" : ""}
+          </span>
+        ))}
       </span>
     </div>
   );

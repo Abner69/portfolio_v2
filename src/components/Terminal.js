@@ -6,7 +6,6 @@ export default function Terminal() {
   const [history, setHistory] = useState([]); // Historial de comandos
   const [response, setResponse] = useState([]);
   const inputRef = useRef(null); // Referencia para el input
-
   // Maneja los comandos
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -23,7 +22,10 @@ export default function Terminal() {
     } else {
       setResponse((prev) => [
         ...prev,
-        { command: cmd, result: <Commands cmd={cmd} history={history} /> },
+        {
+          command: cmd,
+          result: <Commands cmd={cmd} history={history} />,
+        },
       ]);
     }
   };

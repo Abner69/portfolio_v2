@@ -67,6 +67,24 @@ export default function HelpCmd() {
         {language === "en" ? "Change the language" : "Cambia el lenguaje"}
       </span>
       <br />
+      spotify
+      <br />
+      <span className="ml-2">↳</span>&nbsp;
+      <span className="text-swmg-cmdtext">
+        {language === "en"
+          ? "Check my Spotify profile"
+          : "Revisa mi perfil de Spotify"}
+      </span>
+      <br />
+      steam
+      <br />
+      <span className="ml-2">↳</span>&nbsp;
+      <span className="text-swmg-cmdtext">
+        {language === "en"
+          ? "Check my Steam profile"
+          : "Revisa mi perfil de Steam"}
+      </span>
+      <br />
       exit
       <br />
       <span className="ml-2">↳</span>&nbsp;

@@ -77,10 +77,10 @@ const About = () => {
 
   return (
     <div className="m-4 p-8 rounded-lg bg-cherry-main dark:bg-dracula-main">
-      <div className="flex flex-col md:flex-row">
-        <div className="max-w-sm mx-auto flex flex-col items-center">
+      <div className="flex flex-col md:flex-row ">
+        <div className="lg:w-2/5 mx-auto flex flex-col items-center lg:justify-center">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+            src={aboutData.imageUrl}
             className="rounded-lg shadow-2xl w-52 "
             alt=""
           />
@@ -96,7 +96,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center lg:w-3/5">
           <h1 className="text-5xl font-bold mx-4 mt-4 text-center text-cherry-text dark:text-dracula-text">
             {aboutData.name}
           </h1>
@@ -107,7 +107,7 @@ const About = () => {
             &gt;{currentText}
           </h2>
 
-          <p className="text-center text-xl py-6 text-cherry-subtext dark:text-dracula-subtext">
+          <p className="text-justify text-xl py-6 m-2 text-cherry-subtext dark:text-dracula-subtext">
             {aboutData.description}
           </p>
           <div className="text-cherry-subtext dark:text-dracula-subtext text-2xl font-bold py-2">

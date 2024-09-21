@@ -6,7 +6,9 @@ import WhoAmi from "./WhoAmi";
 import { useLanguage } from "../context/LanguageContext";
 import { useWizard } from "../context/WizardContext";
 import HelpCmd from "./HelpCmd";
-
+import Sudo from "./Sudo";
+import Spotify from "./Spotify";
+import Steam from "./Steam";
 export default function Commands({ cmd, history }) {
   const { language, handleLanguageChange } = useLanguage();
   const { toggleWizardState } = useWizard();
@@ -59,6 +61,12 @@ export default function Commands({ cmd, history }) {
       return <ExperienceCmd />;
     case "skills":
       return <SkillsCmd />;
+    case "sudo":
+      return <Sudo />;
+    case "spotify":
+      return <Spotify />;
+    case "steam":
+      return <Steam />;
     default:
       return (
         <span>

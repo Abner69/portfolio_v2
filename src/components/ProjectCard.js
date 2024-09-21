@@ -1,30 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
-export default function ProjectCard({ projects, language }) {
+export default function ProjectCard({ projects }) {
+  const { language } = useLanguage();
+  const [expandedIndex, setExpandedIndex] = useState(null);
   return (
-    <div className="rounded-box flex w-full md:justify-center rounded-xl p-4 overflow-x-auto bg-cherry-main dark:bg-dracula-main">
-      {projects.map((project, index) => (
-        <div
-          className="carousel-item m-4 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110 focus-within:border-cherry-text-500 hover:m-4 dark:hover:border-dracula-text-500"
-          key={index}
-        >
-          <div className="flex flex-col min-h-96 w-52 rounded-xl overflow-hidden bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-5 shadow-xl hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500">
-            <figure className="w-full h-32 overflow-hidden">
-              <img
-                className="w-full h-full self-center"
-                src={project.imageUrl}
-                alt={project.name || "Company"}
-              />
-            </figure>
-            <div className="flex flex-col items-center">
-              <h2 className="text-xl font-bold text-cherry-text dark:text-dracula-text">
+    <div className="flex w-full h-full justify-between items-center overflow-x-scroll hide-scrollbar rounded-xl p-8 bg-cherry-main dark:bg-dracula-main">
+      {projects.map((project, index) => {
+        const isExpanded = expandedIndex === index;
+        return (
+          <div
+            className="flex flex-col min-w-60 max-w-60 min-h-96 rounded-xl shadow-xl overflow-hidden m-4 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110 focus-within:border-cherry-text-500 hover:m-4 bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-5 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500"
+            key={index}
+            onClick={() => setExpandedIndex(isExpanded ? null : index)}
+          >
+            <img
+              className="w-full h-32 overflow-hidden"
+              src={project.imageUrl}
+              alt={project.name || "Company"}
+            />
+
+            <div className="flex flex-col items-center p-4">
+              <h2 className="font-bold text-center text-xl text-cherry-text dark:text-dracula-text">
                 {project.name}
               </h2>
-              <p className="text-md text-cherry-subtext self-center text-center dark:text-dracula-subtext">
+              <p className="text-center text-md text-cherry-subtext dark:text-dracula-subtext">
                 {project.year}
               </p>
-              <p className="text-sm text-cherry-text-900 dark:text-white">
-                {project.description}
+              <p className="text-sm text-center text-cherry-text-900 dark:text-white">
+                {isExpanded
+                  ? project.description
+                  : language === "en"
+                  ? "See description..."
+                  : "Ver Descripción..."}
               </p>
               <p>
                 {project.link && (
@@ -38,21 +46,29 @@ export default function ProjectCard({ projects, language }) {
                   </a>
                 )}
               </p>
-              <div className="flex p-2 flex-wrap mb-1">
-                {project.technologies &&
-                  project.technologies.map((tech, index) => (
-                    <div
-                      className="font-bold text-xs m-1 py-1 px-2 text-cherry-text bg-black bg-opacity-5 dark:text-dracula-text-400 dark:bg-white dark:bg-opacity-10 rounded-2xl"
-                      key={index}
-                    >
-                      {tech}
-                    </div>
-                  ))}
-              </div>
+              {isExpanded ? (
+                <div className="flex flex-wrap justify-center p-2 mb-1">
+                  {project.technologies &&
+                    project.technologies.map((tech, idx) => (
+                      <div
+                        className="font-bold text-xs rounded-2xl m-1 py-1 px-2 text-cherry-text bg-black bg-opacity-5 dark:text-dracula-text-400 dark:bg-white dark:bg-opacity-10"
+                        key={idx}
+                      >
+                        {tech}
+                      </div>
+                    ))}
+                </div>
+              ) : (
+                <div className="font-bold text-xs rounded-2xl m-1 py-1 px-2 text-cherry-text bg-black bg-opacity-5 dark:text-dracula-text-400 dark:bg-white dark:bg-opacity-10">
+                  {language === "en"
+                    ? "See Technologies..."
+                    : "Ver Tecnologias..."}
+                </div>
+              )}
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

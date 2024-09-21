@@ -1,0 +1,129 @@
+[    0.000000] Linux version 5.10.0-13-amd64 (debian-kernel@lists.debian.org) (gcc-10 (Debian 10.2.1-6) 10.2.1 20210110, GNU ld (GNU Binutils for Debian) 2.35.2) #1 SMP Debian 5.10.106-1 (2022-03-17)
+[    0.000000] Command line: BOOT_IMAGE=/boot/vmlinuz-5.10.0-13-amd64 root=UUID=abcd1234-5678-9abc-def0-1234567890 ro quiet
+
+[  OK  ] Started udev Kernel Device Manager.
+[  OK  ] Started Flush Journal to Persistent Storage.
+[  OK  ] Created slice system-getty.slice.
+[  OK  ] Listening on Journal Audit Socket.
+[  OK  ] Listening on Journal Socket (/dev/log).
+[  OK  ] Reached target Remote File Systems.
+[DEPEND] Dependency failed for Network Manager Wait Online.
+[  OK  ] Reached target Basic System.
+[  OK  ] Started D-Bus System Message Bus.
+[  OK  ] Started Network Service.
+[  OK  ] Reached target Network.
+[  OK  ] Started OpenSSH server daemon.
+[FAILED] Failed to start Authorization Manager.
+[  OK  ] Reached target Multi-User System.
+[    0.000000] Initializing cgroup subsys cpuset
+[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Initializing cgroup subsys cpuacct
+[    0.000000] Linux version 5.15.0-50-generic (buildd@lgw01-amd64-048) (gcc (Ubuntu 11.2.0-19ubuntu1) 11.2.0, GNU ld (GNU Binutils for Ubuntu) 2.37) #56-Ubuntu SMP Tue Sep 20 13:23:26 UTC 2022 (Ubuntu 5.15.0-50.56-generic 5.15.60)
+[    0.000000] Command line: BOOT_IMAGE=/boot/vmlinuz-5.15.0-50-generic root=UUID=abcd1234-5678-9abc-def0-1234567890 ro quiet splash
+[    0.000000] KERNEL supported cpus:
+[    0.000000]   Intel GenuineIntel
+[    0.000000]   AMD AuthenticAMD
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x020: 'AVX-512 opmask'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x040: 'AVX-512 Hi256'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x080: 'AVX-512 ZMM_Hi256'
+[    0.000000] x86/fpu: xstate_offset[3]:  576, xstate_sizes[3]:  256
+[    0.000000] x86/fpu: xstate_offset[4]:  832, xstate_sizes[4]:   64
+[    0.000000] x86/fpu: Enabled xstate features 0x1e7, context size is 960 bytes, using 'compacted' format.
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009ffff] usable
+[    0.000000] BIOS-e820: [mem 0x00000000000a0000-0x00000000000fffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000000100000-0x00000000780cbfff] usable
+[    0.000000] BIOS-e820: [mem 0x00000000780cc000-0x000000007a242fff] reserved
+[    0.000000] BIOS-e820: [mem 0x000000007a243000-0x000000007a247fff] ACPI data
+[    0.000000] BIOS-e820: [mem 0x000000007a248000-0x000000007a5fffff] ACPI NVS
+[    0.000000] BIOS-e820: [mem 0x000000007a600000-0x000000007eecafff] reserved
+[    0.000000] BIOS-e820: [mem 0x000000007eecb000-0x000000007eefefff] ACPI data
+[    0.000000] BIOS-e820: [mem 0x000000007eeff000-0x000000007effffff] usable
+[    0.000000] BIOS-e820: [mem 0x000000007f000000-0x000000007fffffff] reserved
+
+[  OK  ] Started Show Plymouth Boot Screen.
+[  OK  ] Reached target Local File Systems.
+         Mounting Kernel Debug File System...
+         Starting Create Static Device Nodes in /dev...
+[  OK  ] Mounted Kernel Debug File System.
+[  OK  ] Reached target Local File Systems (Pre).
+[  OK  ] Reached target NFS client services.
+         Starting Load AppArmor profiles...
+[  OK  ] Started Create Static Device Nodes in /dev.
+         Starting udev Kernel Device Manager...
+[  OK  ] Started udev Kernel Device Manager.
+[  OK  ] Reached target Slices.
+[  OK  ] Listening on udev Kernel Socket.
+[  OK  ] Listening on Journal Socket.
+[  OK  ] Started Load AppArmor profiles.
+         Starting Set console font and keymap...
+[  OK  ] Started Set console font and keymap.
+[  OK  ] Reached target Network (Pre).
+[  OK  ] Reached target System Time Synchronized.
+         Starting Network Manager...
+         Starting OpenSSH Daemon...
+[  OK  ] Started OpenSSH Daemon.
+[  OK  ] Started Network Manager.
+[  OK  ] Reached target Network.
+[  OK  ] Reached target Multi-User System.
+[    0.000000] Initializing cgroup subsys memory
+[    0.000000] Initializing cgroup subsys devices
+[    0.000000] Initializing cgroup subsys freezer
+[    0.000000] Initializing cgroup subsys net_cls
+[    0.000000] Initializing cgroup subsys perf_event
+[    0.000000] Initializing cgroup subsys net_prio
+[    0.000000] Initializing cgroup subsys hugetlb
+[    0.000000] Initializing cgroup subsys pids
+[    0.000000] CPU: Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz stepping 0a
+[    0.000000] Performance Events: PEBS fmt3+, Skylake events, 32-deep LBR, full-width counters, Intel PMU driver.
+[    0.000000] Hierarchical SRCU implementation.
+[    0.000000] NMI watchdog: enabled on all CPUs, permanently consumes one hw-PMU counter.
+[    0.000000] smp: Bringing up secondary CPUs ...
+[    0.000000] x86: Booting SMP configuration:
+[    0.000000] .... node  #0, CPUs:        #1 #2 #3 #4 #5 #6 #7
+[    0.000000] smp: Brought up 1 node, 8 CPUs
+[    0.000000] smpboot: Max logical packages: 1
+[    0.000000] smpboot: Total of 8 processors activated (41569.28 BogoMIPS)
+
+[  OK  ] Found device /dev/sda1.
+         Starting File System Check on /dev/sda1...
+[  OK  ] Started File System Check on /dev/sda1.
+         Mounting /boot...
+[  OK  ] Mounted /boot.
+         Mounting /boot/efi...
+[  OK  ] Mounted /boot/efi.
+         Mounting FUSE Control File System...
+[  OK  ] Mounted FUSE Control File System.
+         Starting Apply Kernel Variables...
+[  OK  ] Started Apply Kernel Variables.
+         Starting Raise network interfaces...
+[  OK  ] Started Raise network interfaces.
+         Starting Load/Save Random Seed...
+[  OK  ] Started Load/Save Random Seed.
+         Starting Load AppArmor profiles managed internally by snapd...
+[  OK  ] Started Load AppArmor profiles managed internally by snapd.
+         Starting Daily apt download activities...
+         Starting Daily apt upgrade and clean activities...
+         Starting Snap Daemon...
+[  OK  ] Started Daily apt download activities.
+[  OK  ] Started Daily apt upgrade and clean activities.
+[  OK  ] Started Snap Daemon.
+         Starting Wait until snapd is fully seeded...
+[  OK  ] Started Wait until snapd is fully seeded.
+         Starting OpenVPN service...
+[  OK  ] Started OpenVPN service.
+[DEPEND] Dependency failed for /mnt/data.
+         Starting Network Name Resolution...
+[  OK  ] Started Network Name Resolution.
+[  OK  ] Reached target Host and Network Name Lookups.
+         Starting Network Manager Script Dispatcher Service...
+[  OK  ] Started Network Manager Script Dispatcher Service.
+[FAILED] Failed to start MySQL Community Server.
+See 'systemctl status mysql.service' for details.
+         Starting Manage, Install and Generate Color Profiles...
+[  OK  ] Started Manage, Install and Generate Color Profiles.
+[  OK  ] Reached target Multi-User System.
+[  OK  ] Reached target Graphical Interface.

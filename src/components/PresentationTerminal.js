@@ -8,7 +8,6 @@ export default function PresentationTerminal() {
   const [aboutData, setAboutData] = useState([]);
   const [presentationData, setPresentationData] = useState([]);
   const cleanPhoneNumber = (phone) => phone.replace(/\D/g, "");
-  localStorage.clear();
   useEffect(() => {
     const profileDataFromContext = getCollectionData("profile");
     try {
