@@ -9,6 +9,7 @@ import HelpCmd from "./HelpCmd";
 import Sudo from "./Sudo";
 import Spotify from "./Spotify";
 import Steam from "./Steam";
+import CertificationsCmd from "./CertificationsCmd";
 export default function Commands({ cmd, history }) {
   const { language, handleLanguageChange } = useLanguage();
   const { toggleWizardState } = useWizard();
@@ -61,6 +62,8 @@ export default function Commands({ cmd, history }) {
       return <ExperienceCmd />;
     case "skills":
       return <SkillsCmd />;
+    case "certifications":
+      return <CertificationsCmd />;
     case "sudo":
       return <Sudo />;
     case "spotify":

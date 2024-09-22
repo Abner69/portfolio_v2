@@ -26,7 +26,7 @@ export default function Certifications() {
   }, [language, getCollectionData]);
 
   if (certifications.length === 0) {
-    return <Skeleton language={language} section={"Skills"} />;
+    return <Skeleton language={language} section={"Certifications"} />;
   }
 
   return (

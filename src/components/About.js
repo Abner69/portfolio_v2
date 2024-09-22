@@ -87,7 +87,7 @@ const About = () => {
           <div className="flex flex-wrap mt-4 justify-center">
             {softSkillData.map((sSkill, index) => (
               <div
-                className="m-1 py-1 px-2 text-cherry-text bg-black bg-opacity-5 dark:text-dracula-text dark:bg-white dark:bg-opacity-5 rounded-2xl"
+                className="m-1 py-1 px-2 rounded-2xl text-cherry-text bg-black bg-opacity-5 dark:text-dracula-text dark:bg-white dark:bg-opacity-5"
                 key={index}
               >
                 {sSkill}
@@ -121,7 +121,7 @@ const About = () => {
             {Array.isArray(aboutData.interests) ? (
               aboutData.interests.map((interest, index) => (
                 <div
-                  className="m-1 py-1 px-2 text-cherry-text bg-black bg-opacity-5 dark:text-dracula-text dark:bg-white dark:bg-opacity-5 rounded-2xl"
+                  className="m-1 py-1 px-2 rounded-2xl text-cherry-text bg-black bg-opacity-5 dark:text-dracula-text dark:bg-white dark:bg-opacity-5"
                   key={index}
                 >
                   {interest}
