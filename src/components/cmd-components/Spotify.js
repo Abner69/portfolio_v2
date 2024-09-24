@@ -1,6 +1,7 @@
 import React from "react";
 import { useLanguage } from "../../context/LanguageContext";
 
+//Data of Spotify User
 const userData = {
   display_name: "Pashiludo",
   followers: { total: 24 },
@@ -13,9 +14,12 @@ const userData = {
 };
 
 export default function Spotify() {
+  //Language Context
   const { language } = useLanguage();
+
   return (
-    <div className="flex flex-col lg:flex-row items-center">
+    //Container for Spotify in CMD
+    <div className="flex flex-col items-center lg:flex-row">
       <img
         className="size-16"
         src={userData.images[0]?.url}

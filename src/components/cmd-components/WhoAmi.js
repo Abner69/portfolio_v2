@@ -3,10 +3,15 @@ import { useLanguage } from "../../context/LanguageContext";
 import { useData } from "../../context/DataContext";
 
 export default function WhoAmi() {
+  //Language Context
   const { language } = useLanguage();
+  //Data Context
   const { getCollectionData } = useData();
+  //Data for this container
   const [aboutData, setAboutData] = useState([]);
   const [softSkillData, setSoftSkillData] = useState([]);
+
+  //Fetching data from db
   useEffect(() => {
     const profileDataFromContext = getCollectionData("profile");
     try {
@@ -26,24 +31,27 @@ export default function WhoAmi() {
       console.error("Error fetching About data:", error);
     }
   }, [language, getCollectionData]);
+
+  //Skeleton if not fetch data
   if (aboutData.length === 0) {
     return <div>{language === "en" ? "No Data" : "No hay Datos"}</div>;
   }
 
   return (
-    <div className="flex flex-col text-swmg-cmdtext-100 text-lg">
+    //Who Am I Section
+    <div className="flex flex-col text-lg text-swmg-cmdtext-100">
       <span className="text-swmg-cmdtext">
         {language === "en" ? "Wizard Name: " : "Nombre del hechicero: "}
         <span className="text-swmg-cmdtext-100">{aboutData.name}👋👋</span>
       </span>
 
       <span className="text-swmg-cmdtext">
-        {language === "en" ? "Magic College: " : "Colegio de hechiceria: "}
+        {language === "en" ? "Magic College: " : "Colegio de hechicería: "}
         <span className="text-swmg-cmdtext-100">{aboutData.college}</span>
       </span>
 
       <span className="text-swmg-cmdtext">
-        {language === "en" ? "Magic Degree: " : "Titulo de hechiceria: "}
+        {language === "en" ? "Magic Degree: " : "Titulo de hechicería: "}
         <span className="text-swmg-cmdtext-100">{aboutData.degree}</span>
       </span>
 
@@ -53,7 +61,7 @@ export default function WhoAmi() {
       </span>
 
       <span className="text-swmg-cmdtext">
-        {language === "en" ? "Description: " : "Descripcion: "}
+        {language === "en" ? "Description: " : "Descripción: "}
         <span className="text-swmg-cmdtext-100">{aboutData.description}</span>
       </span>
       <span className="text-swmg-cmdtext">

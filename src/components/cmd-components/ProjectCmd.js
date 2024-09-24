@@ -3,10 +3,14 @@ import { useLanguage } from "../../context/LanguageContext";
 import { useData } from "../../context/DataContext";
 
 export default function ProjectCmd() {
+  //Language Context
   const { language } = useLanguage();
+  //Data Context
   const { getCollectionData } = useData();
+  //Data for this container
   const [projects, setProjects] = useState([]);
 
+  //Fetching data from db
   useEffect(() => {
     const projectsDataFromContext = getCollectionData("projects");
     try {
@@ -20,12 +24,16 @@ export default function ProjectCmd() {
       console.error("Error fetching Project data:", error);
     }
   }, [language, getCollectionData]);
+
+  //Skeleton if not fetch data
   if (projects.length === 0) {
     return <div>{language === "en" ? "No Projects" : "No hay Proyectos"}</div>;
   }
+
   return (
-    <div className="flex flex-col text-swmg-cmdtext-100 text-lg">
-      <span className="text-swmg-cmdtext text-center">
+    //Container for Projects in CMD
+    <div className="flex flex-col text-lg text-swmg-cmdtext-100">
+      <span className="text-center text-swmg-cmdtext">
         {language === "en" ? "Projects" : "Proyectos"}
       </span>
       <hr className="border-swmg-display" />
@@ -55,7 +63,7 @@ export default function ProjectCmd() {
             {language === "en" ? "Technologies: " : "Tecnologías: "}
             {project.technologies &&
               project.technologies.map((tech, index) => (
-                <span className="text-swmg-cmdtext-100 px-1" key={index}>
+                <span className="px-1 text-swmg-cmdtext-100" key={index}>
                   {tech} {project.technologies.length !== index + 1 ? "-" : ""}
                 </span>
               ))}

@@ -2,8 +2,11 @@ import React from "react";
 import { useLanguage } from "../../context/LanguageContext";
 
 export default function HelpCmd() {
+  //Language Context
   const { language } = useLanguage();
+
   return (
+    //Show the availables commands in CMD
     <div className="text-swmg-cmdtext-100 text-lg">
       whoami
       <br />

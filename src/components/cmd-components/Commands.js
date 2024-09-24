@@ -11,9 +11,12 @@ import Spotify from "./Spotify";
 import Steam from "./Steam";
 import CertificationsCmd from "./CertificationsCmd";
 export default function Commands({ cmd, history }) {
+  //Language Context
   const { language, handleLanguageChange } = useLanguage();
+  //Wizard Context
   const { toggleWizardState } = useWizard();
 
+  //Options availables in CMD
   switch (cmd.toLowerCase()) {
     case "help":
       return <HelpCmd />;

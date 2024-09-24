@@ -3,15 +3,22 @@ import { useData } from "../../context/DataContext";
 import { useLanguage } from "../../context/LanguageContext";
 
 export default function ExperienceCmd() {
+  //Language Context
   const { language } = useLanguage();
+  //Data Context
   const { getCollectionData } = useData();
+  //Data for this container
   const [formalExperience, setFormalExperience] = useState([]);
   const [freelancerExperience, setFreelancerExperience] = useState([]);
+
+  //Function to convert dates from db to legible dates
   const formatDate = (timestamp) => {
-    if (!timestamp || !timestamp.seconds) return "N/A"; // Retorna "N/A" si el timestamp no es válido
-    const date = new Date(timestamp.seconds * 1000); // Convierte a milisegundos
-    return date.toLocaleDateString(); // Convierte a una cadena de fecha legible
+    if (!timestamp || !timestamp.seconds) return "N/A";
+    const date = new Date(timestamp.seconds * 1000);
+    return date.toLocaleDateString();
   };
+
+  //Fetching data from db
   useEffect(() => {
     const projectsDataFromContext = getCollectionData("experience");
     try {
@@ -36,15 +43,16 @@ export default function ExperienceCmd() {
     }
   }, [language, getCollectionData]);
 
-  // Función para convertir Firestore timestamp a una fecha legible
-
+  //Skeleton if not fetch data
   if (!formalExperience.length && !freelancerExperience.length) {
     return (
       <div>{language === "en" ? "No Experience" : "No hay Experiencia"}</div>
     );
   }
+
   return (
-    <div className="flex flex-col text-swmg-cmdtext-100 text-lg">
+    //Experience Container
+    <div className="flex flex-col text-lg text-swmg-cmdtext-100">
       <span className="text-swmg-cmdtext text-center">
         {language === "en" ? "Formal Experience" : "Experiencia Formal"}
       </span>

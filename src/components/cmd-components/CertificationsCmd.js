@@ -3,9 +3,14 @@ import { useData } from "../../context/DataContext";
 import { useLanguage } from "../../context/LanguageContext";
 
 export default function CertificationsCmd() {
+  //Language Context
   const { language } = useLanguage();
+  //Data Context
   const { getCollectionData } = useData();
+  //Data for this component
   const [certifications, setCertifications] = useState([]);
+
+  //Data fetching from db
   useEffect(() => {
     const skillsDataFromContext = getCollectionData("profile");
     try {
@@ -24,6 +29,7 @@ export default function CertificationsCmd() {
     }
   }, [language, getCollectionData]);
 
+  //Skeleton if not fetch data
   if (certifications.length === 0) {
     return (
       <div>
@@ -34,9 +40,10 @@ export default function CertificationsCmd() {
     );
   }
   return (
-    <div className="flex flex-col text-swmg-cmdtext-100 text-lg">
-      <span className="text-swmg-cmdtext text-center">
-        {language === "en" ? "Certifications " : "Certificaciones"}
+    //Container Certification for CMD
+    <div className="flex flex-col text-lg text-swmg-cmdtext-100">
+      <span className="text-center text-swmg-cmdtext">
+        {language === "en" ? "Certifications " : "Certificado"}
       </span>
       <hr className="border-swmg-display" />
       {certifications.map((certification, index) => (

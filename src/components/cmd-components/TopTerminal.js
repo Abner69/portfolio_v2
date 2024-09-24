@@ -3,13 +3,16 @@ import { useWizard } from "../../context/WizardContext";
 import Logo from "../../assets/Logo";
 
 export default function TopTerminal() {
+  //Wizard context
   const { toggleWizardState } = useWizard();
+
   return (
+    //Top of terminal
     <div className="flex justify-between items-center">
       <div className="m-2">
         <Logo width={"w-6"} />
       </div>
-      <div class="p-2 text-center text-swmg-text">
+      <div class="text-center p-2 text-swmg-text">
         <a href="https://github.com/abner69/">abner69@pipiripau420MM</a>
       </div>
       <button onClick={() => toggleWizardState(false)} className="m-2">
@@ -19,7 +22,7 @@ export default function TopTerminal() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="h-6 text-cherry-title dark:text-dracula-title"
+          className="h-6 text-swmg-text"
         >
           <path
             strokeLinecap="round"

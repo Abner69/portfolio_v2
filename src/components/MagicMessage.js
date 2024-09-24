@@ -71,7 +71,7 @@ export default function MagicMessage({ handleClose }) {
 
   return (
     //Container Magic Message
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-50">
+    <div className="flex justify-center items-center fixed inset-0 z-50 bg-black bg-opacity-50">
       <div className="relative p-2 bg-swmg-back">
         <div className="flex flex-col w-full h-full ring-1 p-6 ring-swmg-display">
           {activeText[0] && (

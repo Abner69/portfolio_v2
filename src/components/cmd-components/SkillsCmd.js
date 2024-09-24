@@ -3,10 +3,14 @@ import { useLanguage } from "../../context/LanguageContext";
 import { useData } from "../../context/DataContext";
 
 export default function SkillsCmd() {
+  //Language Context
   const { language } = useLanguage();
+  //Data Context
   const { getCollectionData } = useData();
+  //Data for this container
   const [skills, setSkills] = useState([]);
 
+  //Fetching data from db
   useEffect(() => {
     const skillsDataFromContext = getCollectionData("profile");
     try {
@@ -20,9 +24,16 @@ export default function SkillsCmd() {
       console.error("Error fetching Skills data:", error);
     }
   }, [language, getCollectionData]);
+
+  //Skeleton if not fecth data
+  if (skills.length === 0) {
+    return <div>{language === "en" ? "No Skills" : "No hay Tecnologías"}</div>;
+  }
+
   return (
-    <div className="flex flex-col text-swmg-cmdtext-100 text-lg">
-      <span className="text-swmg-cmdtext text-center">
+    //Container for Skills in CMD
+    <div className="flex flex-col text-lg text-swmg-cmdtext-100">
+      <span className="text-center text-swmg-cmdtext">
         {language === "en" ? "Tech Stack" : "Conocimientos Tecnologicos"}
       </span>
       <hr className="border-swmg-display" />

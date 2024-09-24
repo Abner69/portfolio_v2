@@ -1,5 +1,7 @@
 import React from "react";
 import { useLanguage } from "../../context/LanguageContext";
+
+//Data of Steam User
 const userData = {
   display_name: "El Pipiripau",
   followers: { total: 21 },
@@ -11,9 +13,12 @@ const userData = {
   external_urls: { steam: "https://steamcommunity.com/id/laperrasucia/" },
 };
 export default function Steam() {
+  //Language Context
   const { language } = useLanguage();
+
   return (
-    <div className="flex flex-col lg:flex-row items-center">
+    //Container for Steam in CMD
+    <div className="flex flex-col  items-center lg:flex-row">
       <img
         className="size-16"
         src={userData.images[0]?.url}
