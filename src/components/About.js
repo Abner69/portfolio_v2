@@ -89,6 +89,16 @@ const About = () => {
       <div className="flex flex-col md:flex-row ">
         {/*Image and Soft Skills container*/}
         <div className="lg:w-2/5 mx-auto flex flex-col items-center lg:justify-center">
+          <h1 className="lg:hidden text-5xl font-bold mx-4 mt-4 text-center text-cherry-text dark:text-dracula-text">
+            {aboutData.name}
+          </h1>
+          <p className="lg:hidden text-center text-sm py-6 text-gray-700 dark:text-gray-400">
+            {aboutData.college} - {aboutData.degree} &#40;{aboutData.yofStudy}
+            &#41;
+          </p>
+          <h2 className="lg:hidden text-center text-3xl font-bold mx-4 mb-4 text-cherry-title dark:text-dracula-title">
+            &gt;{currentText}
+          </h2>
           <img
             src={aboutData.imageUrl}
             className="rounded-lg shadow-2xl w-52 "
@@ -105,17 +115,38 @@ const About = () => {
               </div>
             ))}
           </div>
+          <a
+            href={aboutData.contact.resume}
+            className="flex w-40 shadow-sm rounded-md px-4 py-2 m-4 focus:outline-none text-cherry-title bg-cherry-text focus:ring-4 focus:ring-cherry-text-400 dark:bg-white dark:bg-opacity-15 dark:hover:bg-opacity-5 dark:text-dracula-title dark:focus:ring-dracula-text-900"
+          >
+            {language === "en" ? "My Resume" : "Mi Currículum"}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              className="ml-4 size-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+              />
+            </svg>
+          </a>
         </div>
         {/*Information Section*/}
         <div className="flex flex-col items-center lg:w-3/5">
           {/*Developer information */}
-          <h1 className="text-5xl font-bold mx-4 mt-4 text-center text-cherry-text dark:text-dracula-text">
+          <h1 className="hidden lg:block text-5xl font-bold mx-4 mt-4 text-center text-cherry-text dark:text-dracula-text">
             {aboutData.name}
           </h1>
-          <p className="text-center text-sm py-6 text-gray-700 dark:text-gray-400">
-            {aboutData.college} - {aboutData.degree} - {aboutData.yofStudy}
+          <p className="hidden lg:block text-center text-sm py-6 text-gray-700 dark:text-gray-400">
+            {aboutData.college} - {aboutData.degree} &#40;{aboutData.yofStudy}
+            &#41;
           </p>
-          <h2 className="text-center text-3xl font-bold m-4 text-cherry-title dark:text-dracula-title">
+          <h2 className="hidden lg:block text-center text-3xl font-bold m-4 text-cherry-title dark:text-dracula-title">
             &gt;{currentText}
           </h2>
           <p className="text-justify text-xl py-6 m-2 text-cherry-subtext dark:text-dracula-subtext">
