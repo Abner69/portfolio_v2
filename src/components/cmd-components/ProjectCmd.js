@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useLanguage } from "../context/LanguageContext";
-import { useData } from "../context/DataContext";
+import { useLanguage } from "../../context/LanguageContext";
+import { useData } from "../../context/DataContext";
 
 export default function ProjectCmd() {
   const { language } = useLanguage();
@@ -52,7 +52,7 @@ export default function ProjectCmd() {
           </span>
           <br />
           <span className="text-swmg-cmdtext">
-            {language === "en" ? "Technologies: " : "Tecnologias: "}
+            {language === "en" ? "Technologies: " : "Tecnologías: "}
             {project.technologies &&
               project.technologies.map((tech, index) => (
                 <span className="text-swmg-cmdtext-100 px-1" key={index}>

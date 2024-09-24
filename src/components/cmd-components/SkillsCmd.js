@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useLanguage } from "../context/LanguageContext";
-import { useData } from "../context/DataContext";
+import { useLanguage } from "../../context/LanguageContext";
+import { useData } from "../../context/DataContext";
 
 export default function SkillsCmd() {
   const { language } = useLanguage();
@@ -29,7 +29,7 @@ export default function SkillsCmd() {
       {skills.map((skill, index) => (
         <div key={index}>
           <span className="text-swmg-cmdtext">
-            {language === "en" ? "Technology: " : "Tecnologia: "}
+            {language === "en" ? "Technology: " : "Tecnología: "}
             <span className="text-swmg-cmdtext-100">{skill.name}</span>
           </span>
           <br />

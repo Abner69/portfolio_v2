@@ -9,12 +9,12 @@ import Footer from "./Footer";
 
 export default function NormalMode() {
   return (
+    //Normal Mode Of Portfolio
     <div>
       <Navbar />
       <div id="about">
         <About />
       </div>
-
       <div id="skills">
         <Skills />
       </div>

@@ -4,9 +4,11 @@ import Typewriter from "typewriter-effect";
 import { useEffect, useState } from "react";
 
 export default function MagicMessage({ handleClose }) {
+  //Language Context
   const { language } = useLanguage();
+  //Wizard Context
   const { toggleWizardState } = useWizard();
-
+  //Text flags
   const [activeText, setActiveText] = useState([
     false,
     false,
@@ -14,8 +16,9 @@ export default function MagicMessage({ handleClose }) {
     false,
     false,
   ]);
+  //Button flag
   const [showButtons, setShowButtons] = useState(false); // Estado para mostrar los botones
-
+  //Messages to shown
   const messages = {
     en: [
       "[Processing request]",
@@ -32,9 +35,10 @@ export default function MagicMessage({ handleClose }) {
       "¿Deseas la red de sabiduría digital?",
     ],
   };
-
+  //Select the language for messages
   const currentLanguageMessages = language === "en" ? messages.en : messages.es;
 
+  //Activate the messages
   useEffect(() => {
     const timers = [];
 
@@ -50,17 +54,15 @@ export default function MagicMessage({ handleClose }) {
       timers.push(
         setTimeout(() => {
           activateText(i);
-        }, i * 2000) // Cada 2 segundos, activando el siguiente texto
+        }, i * 2000)
       );
     }
 
-    // Mostrar los botones después del último mensaje
     timers.push(
       setTimeout(() => {
         setShowButtons(true);
-      }, activeText.length * 2000) // Después de mostrar todos los mensajes
+      }, activeText.length * 2000)
     );
-
     // Cleanup function to clear timers if the component unmounts
     return () => {
       timers.forEach((timer) => clearTimeout(timer));
@@ -68,11 +70,13 @@ export default function MagicMessage({ handleClose }) {
   }, [activeText.length]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
+    //Container Magic Message
+    <div className="fixed inset-0 z-50 bg-black bg-opacity-50">
       <div className="relative p-2 bg-swmg-back">
-        <div className="flex flex-col w-full h-full ring-1 ring-swmg-display p-6">
+        <div className="flex flex-col w-full h-full ring-1 p-6 ring-swmg-display">
           {activeText[0] && (
-            <p className="font-retro text-xl font-bold text-swmg-display whitespace-pre-line">
+            <p className="font-retro text-xl font-bold whitespace-pre-line text-swmg-display">
+              {/*Displays message in typing style*/}
               <Typewriter
                 options={{
                   strings: ">" + currentLanguageMessages[0],
@@ -80,13 +84,13 @@ export default function MagicMessage({ handleClose }) {
                   loop: false,
                   delay: 10,
                   pauseFor: 2000,
-                  cursor: "", // Eliminar el cursor
+                  cursor: "",
                 }}
               />
             </p>
           )}
           {activeText[1] && (
-            <p className="font-retro text-sm font-bold my-4 text-swmg-display whitespace-pre-line">
+            <p className="font-retro text-sm font-bold my-4 whitespace-pre-line text-swmg-display">
               <Typewriter
                 options={{
                   strings: ">" + currentLanguageMessages[1],
@@ -94,13 +98,13 @@ export default function MagicMessage({ handleClose }) {
                   loop: false,
                   delay: 10,
                   pauseFor: 2000,
-                  cursor: "", // Eliminar el cursor
+                  cursor: "",
                 }}
               />
             </p>
           )}
           {activeText[2] && (
-            <p className="font-retro text-sm font-bold my-4 text-swmg-display whitespace-pre-line">
+            <p className="font-retro text-sm font-bold my-4 whitespace-pre-line text-swmg-display">
               <Typewriter
                 options={{
                   strings: ">" + currentLanguageMessages[2],
@@ -108,13 +112,13 @@ export default function MagicMessage({ handleClose }) {
                   loop: false,
                   delay: 10,
                   pauseFor: 2000,
-                  cursor: "", // Eliminar el cursor
+                  cursor: "",
                 }}
               />
             </p>
           )}
           {activeText[3] && (
-            <p className="font-retro text-center text-sm font-bold my-4 text-swmg-subtext whitespace-pre-line">
+            <p className="font-retro text-center text-sm font-bold my-4 whitespace-pre-line text-swmg-subtext">
               <Typewriter
                 options={{
                   strings: "**" + currentLanguageMessages[3] + "**",
@@ -122,13 +126,13 @@ export default function MagicMessage({ handleClose }) {
                   loop: false,
                   delay: 10,
                   pauseFor: 2000,
-                  cursor: "", // Eliminar el cursor
+                  cursor: "",
                 }}
               />
             </p>
           )}
           {activeText[4] && (
-            <p className="font-retro text-sm font-bold my-4 text-yellow-300 whitespace-pre-line">
+            <p className="font-retro text-sm font-bold my-4 whitespace-pre-line text-yellow-300">
               <Typewriter
                 options={{
                   strings: ">" + currentLanguageMessages[4],
@@ -136,7 +140,7 @@ export default function MagicMessage({ handleClose }) {
                   loop: false,
                   delay: 10,
                   pauseFor: 2000,
-                  cursor: "", // Eliminar el cursor
+                  cursor: "",
                 }}
               />
               {showButtons && (

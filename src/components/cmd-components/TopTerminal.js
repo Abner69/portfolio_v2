@@ -1,6 +1,6 @@
 import React from "react";
-import { useWizard } from "../context/WizardContext";
-import Logo from "../assets/Logo";
+import { useWizard } from "../../context/WizardContext";
+import Logo from "../../assets/Logo";
 
 export default function TopTerminal() {
   const { toggleWizardState } = useWizard();

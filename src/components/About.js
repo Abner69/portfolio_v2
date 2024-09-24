@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useData } from "../context/DataContext";
 import Contact from "./Contact";
-import Skeleton from "./Skeleton";
+import Skeleton from "./skeleton-components/Skeleton";
 import { useLanguage } from "../context/LanguageContext";
 const About = () => {
+  //Language Context
   const { language } = useLanguage();
+  //Data context
   const { getCollectionData } = useData();
+  //Data for this component
   const [aboutData, setAboutData] = useState([]);
   const [currentText, setCurrentText] = useState("");
   const [rolesData, setRolesData] = useState([]);
   const [softSkillData, setSoftSkillData] = useState([]);
+
+  //Data fetching from db
   useEffect(() => {
     const profileDataFromContext = getCollectionData("profile");
     try {
@@ -34,12 +39,13 @@ const About = () => {
     }
   }, [language, getCollectionData]);
 
+  //Typer for roles
   useEffect(() => {
     let currentIndex = 0;
     let currentString = "";
     let charIndex = 0;
     let isDeleting = false;
-    let typingTimeout; // Variable para almacenar el timeout actual
+    let typingTimeout;
 
     const type = () => {
       if (!rolesData.length) return;
@@ -67,23 +73,28 @@ const About = () => {
 
     type();
 
-    // Limpieza al desmontar o cuando rolesData cambie
+    //Cleaning
     return () => clearTimeout(typingTimeout);
   }, [rolesData]);
 
+  //Skeleton if not fetch data
   if (aboutData.length === 0) {
     return <Skeleton section={"About"} />;
   }
 
   return (
+    //Container About Section
     <div className="m-4 p-8 rounded-lg bg-cherry-main dark:bg-dracula-main">
+      {/* Container aling, desktop row, mobile col*/}
       <div className="flex flex-col md:flex-row ">
+        {/*Image and Soft Skills container*/}
         <div className="lg:w-2/5 mx-auto flex flex-col items-center lg:justify-center">
           <img
             src={aboutData.imageUrl}
             className="rounded-lg shadow-2xl w-52 "
             alt=""
           />
+          {/*Soft Skills badges */}
           <div className="flex flex-wrap mt-4 justify-center">
             {softSkillData.map((sSkill, index) => (
               <div
@@ -95,8 +106,9 @@ const About = () => {
             ))}
           </div>
         </div>
-
+        {/*Information Section*/}
         <div className="flex flex-col items-center lg:w-3/5">
+          {/*Developer information */}
           <h1 className="text-5xl font-bold mx-4 mt-4 text-center text-cherry-text dark:text-dracula-text">
             {aboutData.name}
           </h1>
@@ -106,29 +118,32 @@ const About = () => {
           <h2 className="text-center text-3xl font-bold m-4 text-cherry-title dark:text-dracula-title">
             &gt;{currentText}
           </h2>
-
           <p className="text-justify text-xl py-6 m-2 text-cherry-subtext dark:text-dracula-subtext">
             {aboutData.description}
           </p>
-          <div className="text-cherry-subtext dark:text-dracula-subtext text-2xl font-bold py-2">
-            {language === "en" ? "Get in touch" : "Contactame"}
+          {/*Contact information */}
+          <div className="text-2xl font-bold py-2 text-cherry-subtext dark:text-dracula-subtext">
+            {language === "en" ? "Get in touch" : "Contáctame"}
           </div>
           <Contact language={language} contact={aboutData.contact} />
-          <div className="text-cherry-subtext dark:text-dracula-subtext text-2xl font-bold py-2">
+          {/*Interests information */}
+          <div className="text-2xl font-bold py-2 text-cherry-subtext dark:text-dracula-subtext">
             {language === "en" ? "Interests" : "Intereses"}
           </div>
-          <div className="w-full flex flex-wrap justify-center items-center p-2">
+          <div className="flex flex-wrap w-full justify-center items-center p-2">
             {Array.isArray(aboutData.interests) ? (
               aboutData.interests.map((interest, index) => (
                 <div
-                  className="m-1 py-1 px-2 rounded-2xl text-cherry-text bg-black bg-opacity-5 dark:text-dracula-text dark:bg-white dark:bg-opacity-5"
+                  className="m-1 py-1 px-2 rounded-2xl text-cherry-text bg-black bg-opacity-5  dark:bg-opacity-5 dark:text-dracula-text dark:bg-white"
                   key={index}
                 >
                   {interest}
                 </div>
               ))
+            ) : language === "en" ? (
+              <p>No interests available.</p>
             ) : (
-              <p>No interests available</p>
+              <p>Intereses no disponibles.</p>
             )}
           </div>
         </div>

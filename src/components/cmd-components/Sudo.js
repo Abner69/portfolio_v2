@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import sudotext from "../assets/sudotext.txt";
-import { useLanguage } from "../context/LanguageContext";
+import sudotext from "../../assets/sudotext.txt";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function Sudo() {
   const [displayedLines, setDisplayedLines] = useState([]);

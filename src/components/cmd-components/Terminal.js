@@ -1,7 +1,9 @@
 import React, { useState, useRef } from "react";
 import Commands from "./Commands";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function Terminal() {
+  const { language } = useLanguage();
   const [command, setCommand] = useState(""); // Comando actual
   const [history, setHistory] = useState([]); // Historial de comandos
   const [response, setResponse] = useState([]);
@@ -33,9 +35,13 @@ export default function Terminal() {
   return (
     <div className="p-4 text-lg overflow-auto hide-scrollbar text-swmg-subtext h-full">
       <span class="text-swmg-cmdtext ">
-        Welcome to my portfolio! — Type{" "}
-        <span class="text-swmg-cmdtext-100">help</span> for a list of supported
-        commands.
+        {language === "en"
+          ? "Welcome to my portfolio! — Type "
+          : "!Bienvenido a mi portafolio! - Escriba "}
+        <span class="text-swmg-cmdtext-100">help</span>{" "}
+        {language === "en"
+          ? "for a list of supported commands."
+          : "para ver la lista de comandos."}
       </span>
       <div className="h-full">
         {response.map((entry, index) => (

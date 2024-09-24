@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useData } from "../context/DataContext";
-import { useLanguage } from "../context/LanguageContext";
+import { useData } from "../../context/DataContext";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function CertificationsCmd() {
   const { language } = useLanguage();

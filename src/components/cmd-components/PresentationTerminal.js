@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useLanguage } from "../context/LanguageContext";
-import image from "../assets/wiiiiizard.webp";
-import { useData } from "../context/DataContext";
+import { useLanguage } from "../../context/LanguageContext";
+import image from "../../assets/wiiiiizard.webp";
+import { useData } from "../../context/DataContext";
 export default function PresentationTerminal() {
   const { language } = useLanguage();
   const { getCollectionData } = useData();
@@ -169,7 +169,7 @@ export default function PresentationTerminal() {
               />
             </svg>
             <div class="text-swmg-subtext text-lg hover:text-swmg-text">
-              {language === "en" ? "Telephone" : "Telefono"} →&nbsp;wa.me/
+              {language === "en" ? "Telephone" : "Teléfono "} →&nbsp;wa.me/
               {aboutData.contact.phone}
             </div>
           </a>

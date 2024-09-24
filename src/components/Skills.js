@@ -1,15 +1,20 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useData } from "../context/DataContext";
-import Skeleton from "./Skeleton";
+import Skeleton from "./skeleton-components/Skeleton";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Skills() {
+  //Language Context
   const { language } = useLanguage();
+  //Data context
   const { getCollectionData } = useData();
   const [skills, setSkills] = useState([]);
-  const [visiblePercentages, setVisiblePercentages] = useState([]); // Estado para los porcentajes visibles
-  const skillRefs = useRef([]); // Referencias a los elementos de habilidad
+  //State for percentages of skills
+  const [visiblePercentages, setVisiblePercentages] = useState([]);
+  //Reference of skills cards
+  const skillRefs = useRef([]);
 
+  //Data fetching from db
   useEffect(() => {
     const skillsDataFromContext = getCollectionData("profile");
     try {
@@ -29,11 +34,11 @@ export default function Skills() {
     }
   }, [language, getCollectionData]);
 
+  //Animation of increasing percentages
   useEffect(() => {
-    // Reinicia el valor de las barras de progreso a 0 cuando cambie el idioma
     skillRefs.current.forEach((ref) => {
       if (ref) {
-        ref.style.setProperty("--value", 0); // Reinicia visualmente a 0
+        ref.style.setProperty("--value", 0);
       }
     });
 
@@ -78,17 +83,22 @@ export default function Skills() {
     return () => observers.forEach((observer) => observer.disconnect());
   }, [skills, language]); // Añadir `language` como dependencia
 
+  //Skeleton if not fetch data
   if (skills.length === 0) {
     return <Skeleton language={language} section={"Skills"} />;
   }
 
   return (
+    //Container Certifications Section
     <div className="flex flex-col items-center p-4">
+      {/*Title of section*/}
       <h2 className="font-bold text-3xl m-4 text-cherry-title dark:text-dracula-title">
-        {language === "en" ? "Tech Stack" : "Tecnologias"}
+        {language === "en" ? "Tech Stack" : "Tecnologías"}
       </h2>
+      {/*Carousel of Skills*/}
       <div className="flex w-full justify-between items-center overflow-x-auto hide-scrollbar rounded-xl p-4 bg-cherry-main dark:bg-dracula-main">
         {skills.map((skill, index) => (
+          //Cards of carousel
           <div
             className="min-w-48 max-w-48 shadow-xl rounded-xl overflow-hidden m-4 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110 hover:m-4"
             key={index}

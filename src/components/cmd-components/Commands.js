@@ -3,8 +3,8 @@ import ProjectCmd from "./ProjectCmd";
 import ExperienceCmd from "./ExperienceCmd";
 import SkillsCmd from "./SkillsCmd";
 import WhoAmi from "./WhoAmi";
-import { useLanguage } from "../context/LanguageContext";
-import { useWizard } from "../context/WizardContext";
+import { useLanguage } from "../../context/LanguageContext";
+import { useWizard } from "../../context/WizardContext";
 import HelpCmd from "./HelpCmd";
 import Sudo from "./Sudo";
 import Spotify from "./Spotify";
@@ -73,9 +73,13 @@ export default function Commands({ cmd, history }) {
     default:
       return (
         <span>
-          Command "{cmd}" not found — Type{" "}
-          <span class="text-swmg-cmdtext-100">help</span> for a list of
-          supported commands.
+          {language === "en"
+            ? `Command "${cmd}" not found — Type `
+            : `Comando "${cmd}" no encontrado — Escriba `}
+          <span class="text-swmg-cmdtext-100">help</span>{" "}
+          {language === "en"
+            ? "for a list of supported commands."
+            : "para ver la lista de comandos."}
         </span>
       );
   }

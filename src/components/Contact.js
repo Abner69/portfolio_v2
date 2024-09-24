@@ -2,12 +2,18 @@ import React from "react";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Contact({ contact }) {
+  //Language Context
   const { language } = useLanguage();
+
+  //Function to clean phone number
   const cleanPhoneNumber = (phone) => phone.replace(/\D/g, "");
+
   return (
-    <div className="w-full flex flex-wrap justify-center items-center">
+    //Container of Contact
+    <div className="flex flex-wrap justify-center items-center w-full">
+      {/*Email*/}
       <a
-        className="flex flex-col min-h-[8rem] bg-cherry-orange shadow-xl w-32 items-center m-2 p-2 rounded-xl bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110 "
+        className="flex flex-col min-h-32 w-32 items-center shadow-xl rounded-xl m-2 p-2 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110 bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500"
         href={`mailto:${contact.email}`}
       >
         <svg
@@ -28,15 +34,15 @@ export default function Contact({ contact }) {
           <div className="text-cherry-text dark:text-dracula-text">
             {language === "en" ? "Email" : "Correo"}
           </div>
-          <div className="text-cherry-text text-sm text-center hover:underline dark:text-dracula-text">
+          <div className="text-sm text-center hover:underline text-cherry-text dark:text-dracula-text">
             {contact.email.split("@")[0]}
             <br />@{contact.email.split("@")[1]}
           </div>
         </div>
       </a>
-
+      {/*Github*/}
       <a
-        className="flex flex-col min-h-[8rem] bg-cherry-orange shadow-xl w-32 items-center m-2 p-2 rounded-xl bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110"
+        className="flex flex-col min-h-32 w-32 items-center shadow-xl rounded-xl m-2 p-2 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110 bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500"
         href={contact.github}
       >
         <svg
@@ -52,14 +58,14 @@ export default function Contact({ contact }) {
 
         <div className="flex flex-col items-center p-1">
           <div className="text-cherry-text dark:text-dracula-text">GitHub</div>
-          <div className="text-cherry-text dark:text-dracula-text text-sm text-center hover:underline">
-            {language === "en" ? "GitHub Profile" : "GitHub de Linkedin"}
+          <div className="text-sm text-center hover:underline text-cherry-text dark:text-dracula-text">
+            {language === "en" ? "GitHub Profile" : "Perfil de GitHub"}
           </div>
         </div>
       </a>
-
+      {/*LinkedIn*/}
       <a
-        className="flex flex-col min-h-[8rem] bg-cherry-orange shadow-xl w-32 items-center m-2 p-2 rounded-xl bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110"
+        className="flex flex-col min-h-32 w-32 items-center shadow-xl rounded-xl m-2 p-2 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110 bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500"
         href={contact.linkedin}
       >
         <svg
@@ -76,14 +82,14 @@ export default function Contact({ contact }) {
           <div className="text-cherry-text dark:text-dracula-text">
             LinkedIn
           </div>
-          <div className="text-cherry-text dark:text-dracula-text text-sm text-center hover:underline">
+          <div className="text-sm text-center hover:underline text-cherry-text dark:text-dracula-text">
             {language === "en" ? "LinkedIn Profile" : "Perfil de Linkedin"}
           </div>
         </div>
       </a>
-
+      {/*Phone Number*/}
       <a
-        className="flex flex-col min-h-[8rem] bg-cherry-orange shadow-xl w-32 items-center m-2 p-2 rounded-xl bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110"
+        className="flex flex-col min-h-32 w-32 items-center shadow-xl rounded-xl m-2 p-2 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110 bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500"
         href={
           "https://api.whatsapp.com/send?phone=" +
           cleanPhoneNumber(contact.phone)
@@ -106,9 +112,9 @@ export default function Contact({ contact }) {
 
         <div className="flex flex-col items-center p-1">
           <div className="text-cherry-text dark:text-dracula-text">
-            {language === "en" ? "Phone" : "Telefono"}
+            {language === "en" ? "Phone" : "Teléfono "}
           </div>
-          <div className="text-cherry-text dark:text-dracula-text text-sm text-center hover:underline">
+          <div className="text-sm text-center hover:underline text-cherry-text dark:text-dracula-text">
             {contact.phone}
           </div>
         </div>

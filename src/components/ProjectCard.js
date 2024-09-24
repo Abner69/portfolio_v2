@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function ProjectCard({ projects }) {
+  //Language Context
   const { language } = useLanguage();
+  //Hook for card expanding
   const [expandedIndex, setExpandedIndex] = useState(null);
+
   return (
+    //Carousel Container
     <div className="flex w-full h-full justify-between items-center overflow-x-scroll hide-scrollbar rounded-xl p-8 bg-cherry-main dark:bg-dracula-main">
       {projects.map((project, index) => {
+        //Verify if cards are expanded
         const isExpanded = expandedIndex === index;
         return (
+          //Card Item
           <div
             className="flex flex-col min-w-60 max-w-60 min-h-96 rounded-xl shadow-xl overflow-hidden m-4 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110 focus-within:border-cherry-text-500 hover:m-4 bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-5 hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500"
             key={index}
@@ -31,7 +37,7 @@ export default function ProjectCard({ projects }) {
                 {isExpanded
                   ? project.description
                   : language === "en"
-                  ? "See description..."
+                  ? "See Description..."
                   : "Ver Descripción..."}
               </p>
               <p>
@@ -62,7 +68,7 @@ export default function ProjectCard({ projects }) {
                 <div className="font-bold text-xs rounded-2xl m-1 py-1 px-2 text-cherry-text bg-black bg-opacity-5 dark:text-dracula-text-400 dark:bg-white dark:bg-opacity-10">
                   {language === "en"
                     ? "See Technologies..."
-                    : "Ver Tecnologias..."}
+                    : "Ver Tecnologías..."}
                 </div>
               )}
             </div>

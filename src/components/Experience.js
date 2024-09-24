@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useData } from "../context/DataContext";
 import ExperienceCard from "./ExperienceCard";
-import Skeleton from "./Skeleton";
+import Skeleton from "./skeleton-components/Skeleton";
 import { useLanguage } from "../context/LanguageContext";
 
 const Experience = () => {
+  //Language Context
   const { language } = useLanguage();
+  //Data context
   const { getCollectionData } = useData();
+  //Data for this component
   const [formalExperience, setFormalExperience] = useState([]);
   const [freelancerExperience, setFreelancerExperience] = useState([]);
+
+  //Data fetching from db
   useEffect(() => {
     const projectsDataFromContext = getCollectionData("experience");
     try {
@@ -33,21 +38,27 @@ const Experience = () => {
     }
   }, [language, getCollectionData]);
 
-  // Función para convertir Firestore timestamp a una fecha legible
-
+  //Skeleton if not fetch data
   if (!formalExperience.length && !freelancerExperience.length) {
     return <Skeleton language={language} section={"Experience"} />;
   }
 
   return (
+    //Cotainer Experience Section
     <div className="flex flex-col items-center p-4">
+      {/*Title for Formal Experience */}
       <h2 className="text-3xl font-bold m-4 text-cherry-title dark:text-dracula-title">
         {language === "en" ? "Formal Experience" : "Experiencia Formal"}
       </h2>
+      {/*Experiences Cards*/}
       <ExperienceCard experiences={formalExperience} />
+      {/*Title for Freelance Experience */}
       <h2 className="text-3xl font-bold m-4 text-cherry-title dark:text-dracula-title">
-        {language === "en" ? "Freelancer Experience" : "Experiencia Freelancer"}
+        {language === "en"
+          ? "Freelancer Experience"
+          : "Experiencia Independiente"}
       </h2>
+      {/*Experiences Cards*/}
       <ExperienceCard experiences={freelancerExperience} />
     </div>
   );

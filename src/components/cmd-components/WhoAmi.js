@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useLanguage } from "../context/LanguageContext";
-import { useData } from "../context/DataContext";
+import { useLanguage } from "../../context/LanguageContext";
+import { useData } from "../../context/DataContext";
 
 export default function WhoAmi() {
   const { language } = useLanguage();

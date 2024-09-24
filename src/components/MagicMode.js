@@ -4,45 +4,52 @@ import soundFile from "../assets/wizzards.weba"; // Ruta al archivo .weba
 import MagicButton from "./MagicMessage";
 
 export default function MagicMode() {
+  //Reference to audio
   const audioRef = useRef(null);
+  //Show rainbow effect when someone hover the button
   const [isHover, setIsHover] = useState(false);
+  //Show rainbow effect and show a message when someone click the button
   const [isClicked, setIsClicked] = useState(false);
 
+  //Play the audio
   const handleClick = () => {
     setIsClicked(true);
     if (audioRef.current) {
-      audioRef.current.currentTime = 7; // Comienza desde el segundo 7
-      audioRef.current.play(); // Reproduce el audio
+      audioRef.current.currentTime = 7;
+      audioRef.current.play();
     }
   };
 
+  //Stop rainbow effect when the mouse leave the button
   const handleMouseLeave = () => {
     if (isClicked === false) {
       setIsHover(false);
     }
   };
 
+  //Show rainbow effect when the mouse hover the button
   const handleMouseOver = () => {
     setIsHover(true);
   };
+  //Stop rainbow effect and music when the message is closed
   const handleClose = () => {
     setIsHover(false);
     setIsClicked(false);
     if (audioRef.current) {
       audioRef.current.pause();
-      audioRef.current.currentTime = 0; // Reinicia el audio
+      audioRef.current.currentTime = 0;
     }
   };
   return (
-    <div className="magic-toggle p-2">
+    <div className="p-2">
       {/* Audio element */}
       <audio ref={audioRef} src={soundFile} preload="auto" />
 
       {/* Magic Button */}
       <button
         button
-        className="magic-button w-full px-4 py-2 text-sm font-medium rounded-md shadow-sm hover:outline-none text-white bg-cherry-text hover:text-cherry-title hover:ring-4 hover:ring-cherry-text-400 dark:bg-white dark:bg-opacity-15 dark:hover:bg-opacity-5 dark:text-dracula-text dark:hover:ring-dracula-text-900 relative overflow-hidden"
-        onClick={handleClick} // Cambiado de onMouseEnter a onClick
+        className="w-full relative overflow-hidden text-sm font-medium shadow-sm rounded-md px-4 py-2 hover:outline-none text-white bg-cherry-text hover:text-cherry-title hover:ring-4 hover:ring-cherry-text-400 dark:bg-white dark:bg-opacity-15 dark:hover:bg-opacity-5 dark:text-dracula-text dark:hover:ring-dracula-text-900"
+        onClick={handleClick}
         onMouseLeave={handleMouseLeave}
         onMouseOver={handleMouseOver}
       >
@@ -50,7 +57,7 @@ export default function MagicMode() {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
           stroke="currentColor"
-          className={`size-5 ${isHover ? "rainbow-glow" : ""}`} // Añade la clase para el brillo
+          className={`size-5 ${isHover ? "rainbow-glow" : ""}`}
         >
           <path
             fill={`currentColor ${isHover ? "rainbow-glow" : ""}`}

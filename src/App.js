@@ -3,8 +3,7 @@ import { DataProvider } from "./context/DataContext";
 import { WizardProvider, useWizard } from "./context/WizardContext";
 import { LanguageProvider } from "./context/LanguageContext";
 import NormalMode from "./components/NormalMode";
-import SWMG from "./components/SWMG";
-localStorage.clear();
+import SWMG from "./components/cmd-components/SWMG";
 const AppContent = () => {
   const { isWizardActive } = useWizard();
   return (

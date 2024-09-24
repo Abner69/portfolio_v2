@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useData } from "../context/DataContext";
-import Skeleton from "./Skeleton";
+import Skeleton from "./skeleton-components/Skeleton";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Certifications() {
+  //Language Context
   const { language } = useLanguage();
+  //Data context
   const { getCollectionData } = useData();
+  //Data for this component
   const [certifications, setCertifications] = useState([]);
+
+  //Data fetching from db
   useEffect(() => {
     const skillsDataFromContext = getCollectionData("profile");
     try {
@@ -25,17 +30,22 @@ export default function Certifications() {
     }
   }, [language, getCollectionData]);
 
+  //Skeleton if not fetch data
   if (certifications.length === 0) {
     return <Skeleton language={language} section={"Certifications"} />;
   }
 
   return (
+    //Container Certifications Section
     <div className="flex flex-col items-center p-4">
+      {/*Title of section*/}
       <h2 className="font-bold text-3xl m-4 text-cherry-title dark:text-dracula-title">
         {language === "en" ? "Certifications" : "Certificados"}
       </h2>
+      {/*Carousel of certifcations*/}
       <div className="flex w-full justify-between items-center overflow-x-auto hide-scrollbar rounded-xl p-4 bg-cherry-main dark:bg-dracula-main">
         {certifications.map((certification, index) => (
+          //Cards of carousel
           <div
             className="min-w-48 max-w-48 h-28 m-4 shadow-xl rounded-xl overflow-hidden hover:border hover:border-cherry-text-500 dark:hover:border-dracula-text-500 transition-transform duration-300 transform hover:scale-110 focus-within:scale-110 hover:m-4"
             key={index}

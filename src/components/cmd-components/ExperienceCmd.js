@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useData } from "../context/DataContext";
-import { useLanguage } from "../context/LanguageContext";
+import { useData } from "../../context/DataContext";
+import { useLanguage } from "../../context/LanguageContext";
 
 export default function ExperienceCmd() {
   const { language } = useLanguage();
@@ -97,7 +97,7 @@ export default function ExperienceCmd() {
               ))}
           </ul>
           <span className="text-swmg-cmdtext">
-            {language === "en" ? "Technologies: " : "Tecnologias: "}
+            {language === "en" ? "Technologies: " : "Tecnologías: "}
             {experience.technologies &&
               experience.technologies.map((tech, index) => (
                 <span className="text-swmg-cmdtext-100 px-1" key={index}>
@@ -115,7 +115,9 @@ export default function ExperienceCmd() {
         </div>
       ))}
       <span className="text-swmg-cmdtext text-center">
-        {language === "en" ? "Freelance Experience" : "Experiencia Freelance"}
+        {language === "en"
+          ? "Freelance Experience"
+          : "Experiencia Independiente"}
       </span>
       <hr className="border-swmg-display" />
       {freelancerExperience.map((experience, index) => (
@@ -166,7 +168,7 @@ export default function ExperienceCmd() {
               ))}
           </ul>
           <span className="text-swmg-cmdtext">
-            {language === "en" ? "Technologies: " : "Tecnologias: "}
+            {language === "en" ? "Technologies: " : "Tecnologías: "}
             {experience.technologies &&
               experience.technologies.map((tech, index) => (
                 <span className="text-swmg-cmdtext-100 px-1" key={index}>
