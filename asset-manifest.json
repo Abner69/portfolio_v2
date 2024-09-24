@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/abner-portfolio69420/static/css/main.3e0c81a9.css",
-    "main.js": "/abner-portfolio69420/static/js/main.f5b6ce8e.js",
-    "static/js/453.20815797.chunk.js": "/abner-portfolio69420/static/js/453.20815797.chunk.js",
-    "static/media/wizzards.weba": "/abner-portfolio69420/static/media/wizzards.8b27dc1aa75605637861.weba",
-    "static/media/dina10px.ttf": "/abner-portfolio69420/static/media/dina10px.49842fde7f744daa2e4c.ttf",
-    "static/media/wiiiiizard.webp": "/abner-portfolio69420/static/media/wiiiiizard.08e825cecab96a5e171b.webp",
-    "static/media/sudotext.txt": "/abner-portfolio69420/static/media/sudotext.1a85a04e98aac85f3e37.txt",
-    "index.html": "/abner-portfolio69420/index.html",
-    "main.3e0c81a9.css.map": "/abner-portfolio69420/static/css/main.3e0c81a9.css.map",
-    "main.f5b6ce8e.js.map": "/abner-portfolio69420/static/js/main.f5b6ce8e.js.map",
-    "453.20815797.chunk.js.map": "/abner-portfolio69420/static/js/453.20815797.chunk.js.map"
+    "main.css": "/portfolio_v2/static/css/main.c8ddce63.css",
+    "main.js": "/portfolio_v2/static/js/main.59ea1a75.js",
+    "static/js/453.20815797.chunk.js": "/portfolio_v2/static/js/453.20815797.chunk.js",
+    "static/media/wizzards.weba": "/portfolio_v2/static/media/wizzards.8b27dc1aa75605637861.weba",
+    "static/media/dina10px.ttf": "/portfolio_v2/static/media/dina10px.49842fde7f744daa2e4c.ttf",
+    "static/media/wiiiiizard.webp": "/portfolio_v2/static/media/wiiiiizard.08e825cecab96a5e171b.webp",
+    "static/media/sudotext.txt": "/portfolio_v2/static/media/sudotext.1a85a04e98aac85f3e37.txt",
+    "index.html": "/portfolio_v2/index.html",
+    "main.c8ddce63.css.map": "/portfolio_v2/static/css/main.c8ddce63.css.map",
+    "main.59ea1a75.js.map": "/portfolio_v2/static/js/main.59ea1a75.js.map",
+    "453.20815797.chunk.js.map": "/portfolio_v2/static/js/453.20815797.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3e0c81a9.css",
-    "static/js/main.f5b6ce8e.js"
+    "static/css/main.c8ddce63.css",
+    "static/js/main.59ea1a75.js"
   ]
 }
