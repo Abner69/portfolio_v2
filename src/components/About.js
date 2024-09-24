@@ -117,7 +117,7 @@ const About = () => {
           </div>
           <a
             href={aboutData.contact.resume}
-            className="flex w-40 shadow-sm rounded-md px-4 py-2 m-4 focus:outline-none text-cherry-title bg-cherry-text focus:ring-4 focus:ring-cherry-text-400 dark:bg-white dark:bg-opacity-15 dark:hover:bg-opacity-5 dark:text-dracula-title dark:focus:ring-dracula-text-900"
+            className="flex shadow-sm rounded-md px-4 py-2 m-4 focus:outline-none text-cherry-title bg-cherry-text focus:ring-4 focus:ring-cherry-text-400 dark:bg-white dark:bg-opacity-15 dark:hover:bg-opacity-5 dark:text-dracula-title dark:focus:ring-dracula-text-900"
           >
             {language === "en" ? "My Resume" : "Mi Currículum"}
             <svg
