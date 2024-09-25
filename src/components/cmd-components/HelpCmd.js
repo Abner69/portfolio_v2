@@ -56,6 +56,24 @@ export default function HelpCmd() {
         {language === "en" ? "Let's see what happens" : "Veamos que sucede"}
       </span>
       <br />
+      skills
+      <br />
+      <span className="ml-2">↳</span>&nbsp;
+      <span className="text-swmg-cmdtext">
+        {language === "en"
+          ? "Show the tech stack"
+          : "Muestra las habilidades técnicas"}
+      </span>
+      <br />
+      certifications
+      <br />
+      <span className="ml-2">↳</span>&nbsp;
+      <span className="text-swmg-cmdtext">
+        {language === "en"
+          ? "Show the certifications"
+          : "Muestra los certificados"}
+      </span>
+      <br />
       clear
       <br />
       <span className="ml-2">↳</span>&nbsp;
