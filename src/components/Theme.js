@@ -1,30 +1,37 @@
 import React, { useEffect, useState } from "react";
 
 const Theme = () => {
-  //Get theme from system
+  // Get theme from localStorage or system
   const [theme, setTheme] = useState(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      return storedTheme;
+    }
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       return "dark";
     }
     return "light";
   });
 
-  //Add and remove the dark class to the body
+  // Add or remove the dark class from the HTML tag
   useEffect(() => {
     if (theme === "dark") {
       document.querySelector("html").classList.add("dark");
     } else {
       document.querySelector("html").classList.remove("dark");
     }
+
+    // Store the current theme in localStorage
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
-  //Change theme
+  // Toggle theme function
   const handleChangeTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
   return (
-    //Button to change theme
+    // Button to change theme
     <button
       onClick={handleChangeTheme}
       className="inline-flex w-full px-4 py-2 text-sm font-medium rounded-md shadow-sm hover:outline-none text-white bg-cherry-text hover:text-cherry-title hover:ring-4 hover:ring-cherry-text-400 dark:bg-white dark:bg-opacity-15 dark:hover:bg-opacity-5 dark:text-dracula-text dark:hover:ring-dracula-text-900"
