@@ -16,9 +16,9 @@ export default function Certifications() {
     const skillsDataFromContext = getCollectionData("profile");
     try {
       if (skillsDataFromContext.length) {
-        const filteredCertifications = skillsDataFromContext.filter(
-          (doc) => doc.component === "Certifications"
-        );
+        const filteredCertifications = skillsDataFromContext
+          .filter((doc) => doc.component === "Certifications")
+          .sort((a, b) => a.year - b.year);
         setCertifications(
           filteredCertifications.length > 0
             ? filteredCertifications[0].certifications

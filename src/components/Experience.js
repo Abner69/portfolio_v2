@@ -18,18 +18,22 @@ const Experience = () => {
     const projectsDataFromContext = getCollectionData("experience");
     try {
       if (projectsDataFromContext.length) {
-        const formalFiltered = projectsDataFromContext.filter(
-          (doc) =>
-            doc.lang === language &&
-            doc.component === "Experience" &&
-            doc.workType === "formal"
-        );
-        const freelanceFiltered = projectsDataFromContext.filter(
-          (doc) =>
-            doc.lang === language &&
-            doc.component === "Experience" &&
-            doc.workType === "freelance"
-        );
+        const formalFiltered = projectsDataFromContext
+          .filter(
+            (doc) =>
+              doc.lang === language &&
+              doc.component === "Experience" &&
+              doc.workType === "formal"
+          )
+          .sort((a, b) => a.startDate - b.startDate);
+        const freelanceFiltered = projectsDataFromContext
+          .filter(
+            (doc) =>
+              doc.lang === language &&
+              doc.component === "Experience" &&
+              doc.workType === "freelance"
+          )
+          .sort((a, b) => a.startDate - b.startDate);
         setFormalExperience(formalFiltered);
         setFreelancerExperience(freelanceFiltered);
       }

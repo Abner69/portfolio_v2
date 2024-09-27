@@ -17,9 +17,10 @@ const Projects = () => {
     const projectsDataFromContext = getCollectionData("projects");
     try {
       if (projectsDataFromContext.length) {
-        const filteredProjects = projectsDataFromContext.filter(
-          (doc) => doc.lang === language && doc.component === "Project"
-        );
+        const filteredProjects = projectsDataFromContext
+          .filter((doc) => doc.lang === language && doc.component === "Project")
+          .sort((a, b) => a.year - b.year);
+
         setProjects(filteredProjects);
       }
     } catch (error) {
